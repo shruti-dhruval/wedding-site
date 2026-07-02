@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "static-server",
+      "runtimeExecutable": "powershell.exe",
+      "runtimeArgs": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "C:\\Users\\shrut\\AppData\\Local\\Temp\\claude\\C--Users-shrut-OneDrive-Documents-Dev-Projects-Wedding-site\\279c04e2-683f-423e-ba4c-0005804c7fa1\\scratchpad\\serve.ps1"
+      ],
+      "port": 8080
+    }
+  ]
+}

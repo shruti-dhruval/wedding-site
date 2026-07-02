@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Shruti &amp; Dhruval — Wedding RSVP</title>
+<meta name="description" content="Join us in celebrating the wedding of Shruti & Dhruval — Gandhinagar & Ahmedabad, December 30, 2026 – January 2, 2027." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="no-scroll">
+
+  <!-- ===================== ENVELOPE INTRO ===================== -->
+  <div id="envelope-screen">
+    <div class="envelope-bg-pattern"></div>
+    <p class="envelope-eyebrow envelope-sub">You are invited</p>
+    <h1 class="envelope-names">Shruti   &amp;   Dhruval</h1>
+    <p class="envelope-sub" style="margin-bottom:36px;">are getting married</p>
+
+    <div class="envelope-wrap" id="envelope-wrap">
+      <div class="envelope">
+        <div class="envelope-back"></div>
+        <div class="card">
+          <div class="card-monogram">S &amp; D</div>
+          <div class="card-date">Dec 30, 2026 – Jan 2, 2027</div>
+        </div>
+        <div class="envelope-pocket"></div>
+        <div class="envelope-flap"></div>
+        <button class="seal-btn" id="open-envelope-btn" aria-label="Open invitation">S&amp;D</button>
+      </div>
+    </div>
+
+    <p class="envelope-tagline">Tap the seal to open your invitation</p>
+  </div>
+
+  <!-- ===================== MAIN SITE ===================== -->
+  <div id="site">
+
+    <nav class="navbar" id="navbar">
+      <div class="navbar-inner">
+        <span class="nav-logo site-logo" aria-label="Shruti and Dhruval"></span>
+        <ul class="nav-links">
+          <li><a href="#story">Our Story</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#rsvp">RSVP</a></li>
+        </ul>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero" id="home">
+      <div class="hero-icon" id="hero-icon"></div>
+      <p class="hero-eyebrow">Together with their families</p>
+      <h1 class="hero-names">Shruti <span class="amp">&amp;</span> Dhruval</h1>
+      <p class="hero-dates">December 30, 2026 – January 2, 2027</p>
+      <p class="hero-location">Gandhinagar &amp; Ahmedabad, Gujarat</p>
+
+      <span class="countdown-label">Count The Moments</span>
+      <div class="countdown" id="countdown">
+        <div class="countdown-unit"><span class="num" id="cd-days">00</span><span class="label">Days</span></div>
+        <div class="countdown-unit"><span class="num" id="cd-hours">00</span><span class="label">Hours</span></div>
+        <div class="countdown-unit"><span class="num" id="cd-mins">00</span><span class="label">Minutes</span></div>
+        <div class="countdown-unit"><span class="num" id="cd-secs">00</span><span class="label">Seconds</span></div>
+      </div>
+
+      <div class="hero-cta">
+        <a href="#rsvp" class="btn btn-primary">RSVP Now</a>
+      </div>
+    </header>
+
+    <!-- Our Story -->
+    <section class="story" id="story">
+      <div class="container">
+        <span class="section-eyebrow">Since we met</span>
+        <h2 class="section-title" id="story-heading">Our Story</h2>
+        <div class="motif-divider">&#10047;</div>
+        <div class="story-grid">
+          <div class="story-art" id="story-art">
+            <img src="assets/img/DSC_0411_small.jpg" alt="Shruti &amp; Dhruval" loading="lazy" />
+          </div>
+          <div class="story-text" id="story-text"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Events -->
+    <section class="events" id="events">
+      <div class="container">
+        <span class="section-eyebrow">December 30 — January 2</span>
+        <h2 class="section-title">Wedding Events</h2>
+        <p class="section-sub">Four days of joy - we'd be honored to have you at each one.</p>
+        <div class="timeline" id="timeline"></div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="gallery" id="gallery">
+      <div class="container">
+        <span class="section-eyebrow">Memories</span>
+        <h2 class="section-title">Gallery</h2>
+        <div class="gallery-grid" id="gallery-grid"></div>
+      </div>
+    </section>
+
+    <!-- RSVP -->
+    <section class="rsvp" id="rsvp">
+      <div class="container">
+        <span class="section-eyebrow">Kindly respond</span>
+        <h2 class="section-title">RSVP</h2>
+        <p class="section-sub">Your presence is the most beautiful gift.</p>
+
+        <form class="rsvp-card" id="rsvp-form">
+          <h3 class="rsvp-section-title">Your Details</h3>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="guest-name">Full Name *</label>
+              <input type="text" id="guest-name" name="guestName" required placeholder="Your full name" />
+            </div>
+            <div class="form-field">
+              <label for="guest-family">Family / Group Name</label>
+              <input type="text" id="guest-family" name="familyName" placeholder="e.g. The Shah Family" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="guest-email">Email *</label>
+              <input type="email" id="guest-email" name="email" required placeholder="you@example.com" />
+            </div>
+            <div class="form-field">
+              <label for="guest-phone">Phone</label>
+              <input type="tel" id="guest-phone" name="phone" placeholder="+1 555 555 5555" />
+            </div>
+          </div>
+
+          <h3 class="rsvp-section-title">Which events will you join?</h3>
+          <div id="rsvp-events"></div>
+
+          <h3 class="rsvp-section-title">Additional Info</h3>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="guest-meal">Meal Preference</label>
+              <select id="guest-meal" name="mealPreference">
+                <option value="Vegetarian">Vegetarian</option>
+                <option value="Swaminarayan">Swaminarayan</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="guest-total">Total Guests (including you)</label>
+              <input type="number" id="guest-total" name="totalGuests" min="1" value="1" />
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="guest-message">Message / Wishes</label>
+            <textarea id="guest-message" name="message" placeholder="Leave a note for the couple (optional)"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary rsvp-submit" id="rsvp-submit-btn">Send RSVP</button>
+          <div class="rsvp-status" id="rsvp-status"></div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+      <div class="footer-monogram site-logo" aria-label="Shruti and Dhruval"></div>
+      <div class="footer-blessings" id="footer-blessings"></div>
+      <div class="footer-contacts" id="footer-contacts"></div>
+      <p class="footer-credit">With love, Shruti &amp; Dhruval — excited to celebrate this beautiful milestone with all of you!</p>
+    </footer>
+
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/icons.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
