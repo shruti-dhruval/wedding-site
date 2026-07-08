@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   renderHero();
   renderStory();
   renderTimeline();
+  renderFamily();
   renderGallery();
   renderRsvpEvents();
   renderFooter();
@@ -66,7 +67,7 @@ function renderTimeline() {
     </div>` : ""}
     <div class="event-card-row${ev.id === "musical-mehfil" ? " event-card-row--right" : ""}" data-event-id="${ev.id}">
       <div class="event-card">
-        <div class="event-day">${ev.day}, ${ev.dateLabel} &middot; ${ev.city}</div>
+        <div class="event-day">${ev.day}, ${ev.dateLabel}</div>
         <h3 class="event-name">${ev.name}</h3>
         <p class="event-subtitle">${ev.subtitle}</p>
         ${ev.venues ? renderVenueBlocks(ev) : renderSingleVenue(ev)}
@@ -104,6 +105,17 @@ function renderVenueBlocks(ev) {
   `).join("");
 }
 
+function renderFamily() {
+  const grid = document.getElementById("family-grid");
+  grid.innerHTML = (typeof FAMILY !== "undefined" ? FAMILY : [])
+    .map((f) => `
+      <div class="family-tile">
+        <img src="${f.src}" alt="${f.label}" loading="lazy" />
+        <span class="family-label">${f.label}</span>
+      </div>
+    `).join("");
+}
+
 function renderGallery() {
   const grid = document.getElementById("gallery-grid");
   const placeholders = Array.from({ length: GALLERY_PLACEHOLDER_COUNT })
@@ -122,7 +134,7 @@ function renderRsvpEvents() {
       <div class="event-choice-head">
         <div>
           <div class="name">${ev.name}</div>
-          <div class="meta">${ev.day}, ${ev.dateLabel} &middot; ${ev.city}</div>
+          <div class="meta">${ev.day}, ${ev.dateLabel} </div>
         </div>
         <label class="toggle">
           <input type="checkbox" class="event-attend-toggle" name="attend_${ev.id}" />

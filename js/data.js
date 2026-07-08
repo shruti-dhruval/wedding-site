@@ -43,9 +43,9 @@ const EVENTS = [
     date: "2026-12-30",
     day: "Wednesday",
     dateLabel: "December 30, 2026",
-    city: "Gandhinagar",
-    venue: "691 Vastunirman Society",
-    address: "Panchshil Park, Sector 21, Gandhinagar, Gujarat 382021",
+    <!-- city: "Gandhinagar", -->
+    venue: "Plot No. 691, Vastunirman Society",
+    address: "Sector 21, Gandhinagar, Gujarat 382021",
     schedule: [
       { time: "2:00 PM", label: "Mehndi Ceremony" },
       { time: "5:00 PM onwards", label: "Dinner" },
@@ -65,8 +65,8 @@ const EVENTS = [
     // Vastunirman Society, then the celebration moves to The Grand Vinayak.
     venues: [
       {
-        venue: "691 Vastunirman Society",
-        address: "Panchshil Park, Sector 21, Gandhinagar, Gujarat 382021",
+        venue: "Plot No. 691, Vastunirman Society",
+        address: "Sector 21, Gandhinagar, Gujarat 382021",
         schedule: [
           { time: "8:00 AM", label: "Ganesh Sthapana" },
           { time: "9:00 AM", label: "Mandap Muhurat" },
@@ -74,13 +74,13 @@ const EVENTS = [
         ],
       },
       {
-        venue: "The Grand Vinayak, Maharashtra Samaj Bhavan",
-        address: "Panchshil Park, Sector 21, Gandhinagar, Gujarat 382021",
+        venue: "The Grand Vinayak",
+        address: "Sector 21, Maharashtra Samaj Bhavan, Gandhinagar, Gujarat 382021",
         schedule: [
           { time: "10:30 AM", label: "Haldi" },
           { time: "11:30 AM onwards", label: "Lunch" },
           { time: "1:00 PM", label: "Grah Shanti" },
-          { time: "2:00 PM", label: "Mameru (with best compliments: Chirag & Neelam Patel)" },
+          { time: "2:00 PM", label: "Mameru" },
         ],
       },
     ],
@@ -93,8 +93,8 @@ const EVENTS = [
     day: "Thursday",
     dateLabel: "December 31, 2026",
     city: "Gandhinagar",
-    venue: "The Grand Vinayak, Maharashtra Samaj Bhavan",
-    address: "Panchshil Park, Sector 21, Gandhinagar, Gujarat 382021",
+    venue: "The Grand Vinayak",
+    address: "Sector 21, Maharashtra Samaj Bhavan, Gandhinagar, Gujarat 382021",
     schedule: [
       { time: "6:30 PM", label: "Sangeet" },
       { time: "7:30 PM onwards", label: "Dinner" },
@@ -110,7 +110,7 @@ const EVENTS = [
     dateLabel: "January 1, 2027",
     city: "Gandhinagar",
     venue: "Hotel Pathikashram Nilaya",
-    address: "Sector 11, Opposite Civil Hospital, Gandhinagar, Gujarat 382007",
+    address: "Sector 11, Opposite Civil Hospital, Gandhinagar, Gujarat 382010",
     schedule: [
       { time: "3:00 PM", label: "Jaan Aagman" },
       { time: "5:30 PM", label: "Hasta Melap" },
@@ -128,13 +128,25 @@ const EVENTS = [
     dateLabel: "January 2, 2027",
     city: "Ahmedabad",
     venue: "Bel Avenir Banquet",
-    address: "Sardar Patel Ring Rd, Near Science City, Sola, Bhadaj, Ahmedabad, Gujarat 382722",
+    address: "Sardar Patel Ring Rd, Near Club Babylon, Near Science City, Sola, Bhadaj, Ahmedabad, Gujarat 382722",
     schedule: [
       { time: "5:30 PM", label: "Sangeet" },
       { time: "7:30 PM onwards", label: "Dinner" },
     ],
     icon: "reception",
   },
+];
+
+// Family photos shown in the "Our Family" section, each with its own label.
+const FAMILY = [
+  { src: "assets/img/family-shruti-parents.jpg", label: "Shruti's Parents" },
+  { src: "assets/img/family-shruti-grandparents-1.jpg", label: "Shruti's Grandparents" },
+  { src: "assets/img/family-shruti-grandparents-2.jpg", label: "Shruti's Grandparents" },
+  { src: "assets/img/family-shruti-brother.jpg", label: "Shruti's Brother" },
+  { src: "assets/img/family-dhruval-parents.jpg", label: "Dhruval's Parents" },
+  { src: "assets/img/family-dhruval-grandparents-1.jpg", label: "Dhruval's Grandparents" },
+  { src: "assets/img/family-dhruval-grandparents-2.jpg", label: "Dhruval's Grandparents" },
+  { src: "assets/img/family-dhruval-brother-sil.jpg", label: "Dhruval's Brother & Sister-in-law" },
 ];
 
 // EDIT ME: Add more real photos here as you get them — each renders at the
