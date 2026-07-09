@@ -9,6 +9,8 @@ const WEDDING = {
   groomFull: "Dhruval Shah",
   brideParents: "Mr. Rajendra Patel & Mrs. Meeta Patel",
   groomParents: "Mr. Jigish Shah & Mrs. Vaibhavi Shah",
+  brideLabel: "Daughter of Rajendra & Meeta Patel",
+  groomLabel: "Son of Jigish & Vaibhavi Shah",
   // Countdown target: Wedding Ceremony, Hasta Melap
   countdownTarget: "2027-01-01T17:30:00+05:30",
   rsvpContacts: [
@@ -43,7 +45,7 @@ const EVENTS = [
     date: "2026-12-30",
     day: "Wednesday",
     dateLabel: "December 30, 2026",
-    <!-- city: "Gandhinagar", -->
+    city: "Gandhinagar",
     venue: "Plot No. 691, Vastunirman Society",
     address: "Sector 21, Gandhinagar, Gujarat 382021",
     schedule: [
@@ -139,14 +141,14 @@ const EVENTS = [
 
 // Family photos shown in the "Our Family" section, each with its own label.
 const FAMILY = [
-  { src: "assets/img/family-shruti-parents.jpg", label: "Shruti's Parents" },
-  { src: "assets/img/family-shruti-grandparents-1.jpg", label: "Shruti's Grandparents" },
-  { src: "assets/img/family-shruti-grandparents-2.jpg", label: "Shruti's Grandparents" },
-  { src: "assets/img/family-shruti-brother.jpg", label: "Shruti's Brother" },
-  { src: "assets/img/family-dhruval-parents.jpg", label: "Dhruval's Parents" },
-  { src: "assets/img/family-dhruval-grandparents-1.jpg", label: "Dhruval's Grandparents" },
-  { src: "assets/img/family-dhruval-grandparents-2.jpg", label: "Dhruval's Grandparents" },
-  { src: "assets/img/family-dhruval-brother-sil.jpg", label: "Dhruval's Brother & Sister-in-law" },
+  { src: "assets/img/family-shruti-parents.jpg", label: "Shruti's Parents<br>(Meeta & Rajendra)" },
+  { src: "assets/img/family-shruti-grandparents-1.jpg", label: "Shruti's Paternal Grandparents<br> (Sushila ba & Bhagu dada)" },
+  { src: "assets/img/family-shruti-grandparents-2.jpg", label: "Shruti's Maternal Grandparents<br> (Kalavati ba & Ravji dada)" },
+  { src: "assets/img/family-shruti-brother.jpg", label: "Shruti's Brother (Ved)" },
+  { src: "assets/img/family-dhruval-parents.jpg", label: "Dhruval's Parents<br>(Vaibhavi & Jigish)" },
+  { src: "assets/img/family-dhruval-grandparents-1.jpg", label: "Dhruval's Paternal Grandparents<br>(Padma ba & Suresh dada)" },
+  { src: "assets/img/family-dhruval-grandparents-2.jpg", label: "Dhruval's Maternal Grandparents<br> (Hansa ba & Pravin dada)" },
+  { src: "assets/img/family-dhruval-brother-sil.jpg", label: "Dhruval's Brother & Sister-in-law<br> (Dakshal & Himadri)" },
 ];
 
 // EDIT ME: Add more real photos here as you get them — each renders at the
@@ -160,6 +162,10 @@ const GALLERY = [
   { src: "assets/img/gallery-6.jpg", alt: "Shruti & Dhruval" },
   { src: "assets/img/gallery-7.jpg", alt: "Shruti & Dhruval" },
   { src: "assets/img/gallery-8.jpg", alt: "Shruti & Dhruval" },
+  { src: "assets/img/gallery-9.jpg", alt: "Shruti & Dhruval" },
+  { src: "assets/img/gallery-10.jpg", alt: "Shruti & Dhruval" },
+  { src: "assets/img/gallery-11.jpg", alt: "Shruti & Dhruval" },
+  { src: "assets/img/gallery-12.jpg", alt: "Shruti & Dhruval" },
 ];
 
 // Number of "coming soon" placeholder tiles to show alongside GALLERY photos.

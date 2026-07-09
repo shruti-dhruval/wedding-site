@@ -43,10 +43,10 @@
         <span class="nav-logo site-logo" aria-label="Shruti and Dhruval"></span>
         <ul class="nav-links">
           <li><a href="#story">Our Story</a></li>
-          <li><a href="#family">Family</a></li>
           <li><a href="#events">Events</a></li>
-          <li><a href="#gallery">Gallery</a></li>
           <li><a href="#rsvp">RSVP</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#family">Family</a></li>
         </ul>
         <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
           <span></span><span></span><span></span>
@@ -58,7 +58,17 @@
     <header class="hero" id="home">
       <div class="hero-icon" id="hero-icon"></div>
       <p class="hero-eyebrow">Together with their families</p>
-      <h1 class="hero-names">Shruti <span class="amp">&amp;</span> Dhruval</h1>
+      <div class="hero-names-block">
+        <div class="hero-name-col">
+          <h1 class="hero-names hero-name-bride">Shruti</h1>
+          <p class="hero-parent-label" id="hero-parent-bride"></p>
+        </div>
+        <span class="hero-names amp">&amp;  </span>
+        <div class="hero-name-col">
+          <h1 class="hero-names hero-name-groom"> Dhruval</h1>
+          <p class="hero-parent-label" id="hero-parent-groom"></p>
+        </div>
+      </div>
       <p class="hero-dates">December 30, 2026 – January 2, 2027</p>
       <p class="hero-location">Gandhinagar &amp; Ahmedabad, Gujarat</p>
 
@@ -90,15 +100,6 @@
       </div>
     </section>
 
-    <!-- Our Family -->
-    <section class="family" id="family">
-      <div class="container">
-        <span class="section-eyebrow">With love and blessings</span>
-        <h2 class="section-title">Our Family</h2>
-        <div class="family-grid" id="family-grid"></div>
-      </div>
-    </section>
-
     <!-- Events -->
     <section class="events" id="events">
       <div class="container">
@@ -106,15 +107,6 @@
         <h2 class="section-title">Wedding Events</h2>
         <p class="section-sub">Four days of joy - we'd be honored to have you at each one.</p>
         <div class="timeline" id="timeline"></div>
-      </div>
-    </section>
-
-    <!-- Gallery -->
-    <section class="gallery" id="gallery">
-      <div class="container">
-        <span class="section-eyebrow">Memories</span>
-        <h2 class="section-title">Gallery</h2>
-        <div class="gallery-grid" id="gallery-grid"></div>
       </div>
     </section>
 
@@ -176,10 +168,27 @@
       </div>
     </section>
 
+    <!-- Gallery -->
+    <section class="gallery" id="gallery">
+      <div class="container">
+        <span class="section-eyebrow">Memories</span>
+        <h2 class="section-title">Gallery</h2>
+        <div class="gallery-grid" id="gallery-grid"></div>
+      </div>
+    </section>
+
+    <!-- Our Family -->
+    <section class="family" id="family">
+      <div class="container">
+        <span class="section-eyebrow">With love and blessings</span>
+        <h2 class="section-title">Our Family</h2>
+        <div class="family-grid" id="family-grid"></div>
+      </div>
+    </section>
+
     <!-- Footer -->
     <footer id="contact">
       <div class="footer-monogram site-logo" aria-label="Shruti and Dhruval"></div>
-      <div class="footer-blessings" id="footer-blessings"></div>
       <div class="footer-contacts" id="footer-contacts"></div>
       <p class="footer-credit">With love, Shruti &amp; Dhruval — excited to celebrate this beautiful milestone with all of you!</p>
     </footer>

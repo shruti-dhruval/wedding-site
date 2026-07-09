@@ -33,6 +33,8 @@ function renderLogos() {
 
 function renderHero() {
   document.getElementById("hero-icon").innerHTML = iconMarkup("ganesh");
+  document.getElementById("hero-parent-bride").textContent = WEDDING.brideLabel;
+  document.getElementById("hero-parent-groom").textContent = WEDDING.groomLabel;
 }
 
 function renderStory() {
@@ -157,12 +159,14 @@ function renderRsvpEvents() {
 }
 
 function renderFooter() {
-  const blessingsHtml =
-    "<strong>With Blessings,</strong>" +
-    WEDDING.blessings.with_blessings.join("<br>") +
-    "<strong>With Best Wishes,</strong>" +
-    WEDDING.blessings.with_best_wishes;
-  document.getElementById("footer-blessings").innerHTML = blessingsHtml;
+  const blessingsEl = document.getElementById("footer-blessings");
+  if (blessingsEl) {
+    blessingsEl.innerHTML =
+      "<strong>With Blessings,</strong>" +
+      WEDDING.blessings.with_blessings.join("<br>") +
+      "<strong>With Best Wishes,</strong>" +
+      WEDDING.blessings.with_best_wishes;
+  }
 
   const contactsHtml = WEDDING.rsvpContacts.map((c) => `
     <a href="${whatsappUrl(c)}" target="_blank" rel="noopener">${iconMarkup("whatsapp")} ${c.name}<br>${formatPhone(c.phone)}</a>
