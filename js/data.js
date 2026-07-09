@@ -148,7 +148,7 @@ const FAMILY = [
   { src: "assets/img/family-dhruval-parents.jpg", label: "Dhruval's Parents<br>(Vaibhavi & Jigish)" },
   { src: "assets/img/family-dhruval-grandparents-1.jpg", label: "Dhruval's Paternal Grandparents<br>(Padma ba & Suresh dada)" },
   { src: "assets/img/family-dhruval-grandparents-2.jpg", label: "Dhruval's Maternal Grandparents<br> (Hansa ba & Pravin dada)" },
-  { src: "assets/img/family-dhruval-brother-sil.jpg", label: "Dhruval's Brother & Sister-in-law<br> (Dakshal & Himadri)" },
+  { src: "assets/img/family-dhruval-brother-sil.jpg", label: "Dhruval's Brother & Sister-in-Law<br> (Dakshal & Himadri)" },
 ];
 
 // EDIT ME: Add more real photos here as you get them — each renders at the
