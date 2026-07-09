@@ -625,7 +625,7 @@ section { position: relative; }
 
 .story-names {
   font-family: var(--script);
-  font-size: 57px;
+  font-size: 50px;
   color: var(--maroon-700);
   margin-bottom: 14px;
 }
