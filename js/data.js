@@ -170,3 +170,4 @@ const GALLERY = [
 
 // Number of "coming soon" placeholder tiles to show alongside GALLERY photos.
 const GALLERY_PLACEHOLDER_COUNT = 0;
+
