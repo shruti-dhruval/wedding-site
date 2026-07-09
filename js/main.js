@@ -4,7 +4,7 @@
 
 // EDIT ME: paste your deployed Google Apps Script Web App URL here.
 // See apps-script/Code.gs and README.md for setup instructions.
-const GOOGLE_SCRIPT_URL = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_URL_HERE";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyYrQqp3zFRLLWH_0CvlJc7gQp4TLqb75-uScrvF3hzWLFxJueubgnxUgFZ07Z3fkFRhw/exec";
 
 document.addEventListener("DOMContentLoaded", () => {
   renderLogos();
@@ -201,15 +201,23 @@ function initEnvelope() {
     if (wrap.classList.contains("is-opening")) return;
     spawnSparkles(wrap);
     wrap.classList.add("is-opening");
+    screen.classList.add("is-opening");
 
-    setTimeout(() => wrap.classList.add("card-rising"), 550);
+    // Flap transition is 3s (see .envelope-flap) — wait for it to fully
+    // finish, plus a brief settle pause, before the card starts rising.
+    setTimeout(() => wrap.classList.add("card-rising"), 3200);
+
+    // Card's rise transition is 3.2s (see .card), ending at 6400ms — once
+    // the envelope has faded away underneath it, let the card lift a little
+    // further and ease back down to rest centered on screen.
+    setTimeout(() => wrap.classList.add("card-settle"), 6400);
 
     setTimeout(() => {
       screen.classList.add("hidden");
       document.body.classList.remove("no-scroll");
       site.style.display = "block";
       requestAnimationFrame(() => site.classList.add("visible"));
-    }, 1500);
+    }, 8200);
   });
 }
 
