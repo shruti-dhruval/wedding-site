@@ -52,7 +52,7 @@ All wedding details live in [`js/data.js`](js/data.js):
 - `OUR_STORY` — heading + paragraphs (currently placeholder text — replace
   with your own).
 - `EVENTS` — the five celebrations (Mehndi, Manglik Prasango, Musical Mehfil,
-  Wedding Ceremony, Reception), each with date, schedule, venue, and address.
+  Wedding, Reception), each with date, schedule, venue, and address.
   Map links and "Add to Calendar" links are generated automatically from this
   data.
 

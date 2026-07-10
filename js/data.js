@@ -11,7 +11,7 @@ const WEDDING = {
   groomParents: "Mr. Jigish Shah & Mrs. Vaibhavi Shah",
   brideLabel: "Daughter of Rajendra & Meeta Patel",
   groomLabel: "Son of Jigish & Vaibhavi Shah",
-  // Countdown target: Wedding Ceremony, Hasta Melap
+  // Countdown target: Wedding, Hasta Melap
   countdownTarget: "2027-01-01T17:30:00+05:30",
   rsvpContacts: [
     { name: "Meeta Patel", phone: "+17323746989" },
@@ -30,8 +30,9 @@ const WEDDING = {
 const OUR_STORY = {
   heading: "Our Story",
   paragraphs: [
-    "Every love story is beautiful, but ours is our favorite. Shruti and Dhruval's journey began with a chance introduction and quickly blossomed into a friendship, and then into a love neither of them saw coming but both are endlessly grateful for.",
-    "From long conversations to shared dreams for the future, they've found in each other a partner for life. Now, surrounded by family and blessings, they're ready to begin their happily ever after — and they can't wait to celebrate with you.",
+    "Shruti and Dhruval's journey began with a chance introduction in May 2024. What started as a simple friendship soon blossomed into a love neither of them expected, but one they are endlessly grateful for.",
+    "Through countless conversations, shared laughter, memorable trips, and dreams of the future, they discovered in each other a true partner for life. Together, they learned that the most beautiful love stories aren't always planned—they simply unfold, one beautiful moment at a time.",
+    "Now, as they begin this new chapter together and promise each other a lifetime of love, laughter, adventures, and cherished memories, they would be honored to have you join them in celebrating the beginning of their forever.",
   ],
 };
 
@@ -49,7 +50,7 @@ const EVENTS = [
     venue: "Plot No. 691, Vastunirman Society",
     address: "Sector 21, Gandhinagar, Gujarat 382021",
     schedule: [
-      { time: "2:00 PM", label: "Mehndi Ceremony" },
+      { time: "2:00 PM", label: "Mehndi" },
       { time: "5:00 PM onwards", label: "Dinner" },
     ],
     icon: "henna",
@@ -105,7 +106,7 @@ const EVENTS = [
   },
   {
     id: "wedding",
-    name: "Wedding Ceremony",
+    name: "Wedding",
     subtitle: "A royal celebration of love, vows, and forever",
     date: "2027-01-01",
     day: "Friday",
@@ -142,12 +143,12 @@ const EVENTS = [
 // Family photos shown in the "Our Family" section, each with its own label.
 const FAMILY = [
   { src: "assets/img/family-shruti-parents.jpg", label: "Shruti's Parents<br>(Meeta & Rajendra)" },
-  { src: "assets/img/family-shruti-grandparents-1.jpg", label: "Shruti's Paternal Grandparents<br> (Sushila ba & Bhagu dada)" },
-  { src: "assets/img/family-shruti-grandparents-2.jpg", label: "Shruti's Maternal Grandparents<br> (Kalavati ba & Ravji dada)" },
+  { src: "assets/img/family-shruti-grandparents-1.jpg", label: "Shruti's Paternal Grandparents<br> (Sushilaben & Bhagubhai)" },
+  { src: "assets/img/family-shruti-grandparents-2.jpg", label: "Shruti's Maternal Grandparents<br> (Kalavatiben & Ravjibhai)" },
   { src: "assets/img/family-shruti-brother.jpg", label: "Shruti's Brother (Ved)" },
   { src: "assets/img/family-dhruval-parents.jpg", label: "Dhruval's Parents<br>(Vaibhavi & Jigish)" },
-  { src: "assets/img/family-dhruval-grandparents-1.jpg", label: "Dhruval's Paternal Grandparents<br>(Padma ba & Suresh dada)" },
-  { src: "assets/img/family-dhruval-grandparents-2.jpg", label: "Dhruval's Maternal Grandparents<br> (Hansa ba & Pravin dada)" },
+  { src: "assets/img/family-dhruval-grandparents-1.jpg", label: "Dhruval's Paternal Grandparents<br>(Padmaben & Sureshbhai)" },
+  { src: "assets/img/family-dhruval-grandparents-2.jpg", label: "Dhruval's Maternal Grandparents<br> (Hansaben & Pravinchandra)" },
   { src: "assets/img/family-dhruval-brother-sil.jpg", label: "Dhruval's Brother & Sister-in-Law<br> (Dakshal & Himadri)" },
 ];
 

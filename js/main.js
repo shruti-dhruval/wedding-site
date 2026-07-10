@@ -207,17 +207,17 @@ function initEnvelope() {
     // finish, plus a brief settle pause, before the card starts rising.
     setTimeout(() => wrap.classList.add("card-rising"), 3200);
 
-    // Card's rise transition is 3.2s (see .card), ending at 6400ms — once
-    // the envelope has faded away underneath it, let the card lift a little
-    // further and ease back down to rest centered on screen.
+    // Card's rise transition is 3.2s (see .card), ending at 6400ms.
     setTimeout(() => wrap.classList.add("card-settle"), 6400);
 
+    // Let the card stay visible for exactly 2 seconds (ending at 8400ms)
+    // before fading out the intro screen.
     setTimeout(() => {
       screen.classList.add("hidden");
       document.body.classList.remove("no-scroll");
       site.style.display = "block";
       requestAnimationFrame(() => site.classList.add("visible"));
-    }, 8200);
+    }, 5400);
   });
 }
 
