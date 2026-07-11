@@ -42,7 +42,7 @@ const EVENTS = [
   {
     id: "mehndi",
     name: "Mehndi Ceremony",
-    subtitle: "An afternoon of color, laughter, and henna",
+    subtitle: "An afternoon of henna, happiness, and heartfelt moments",
     date: "2026-12-30",
     day: "Wednesday",
     dateLabel: "December 30, 2026",
@@ -58,7 +58,7 @@ const EVENTS = [
   {
     id: "manglik-prasango",
     name: "Manglik Prasango",
-    subtitle: "",
+    subtitle: "A sacred beginning filled with prayers, blessings, and cherished traditions",
     date: "2026-12-31",
     day: "Thursday",
     dateLabel: "December 31, 2026",
@@ -107,7 +107,7 @@ const EVENTS = [
   {
     id: "wedding",
     name: "Wedding",
-    subtitle: "A royal celebration of love, vows, and forever",
+    subtitle: "A royal celebration of love, vows, and new beginnings",
     date: "2027-01-01",
     day: "Friday",
     dateLabel: "January 1, 2027",
@@ -125,7 +125,7 @@ const EVENTS = [
   {
     id: "reception",
     name: "Reception",
-    subtitle: "An evening of music, dance, and celebration",
+    subtitle: "A grand evening of dance, celebration, and togetherness",
     date: "2027-01-02",
     day: "Saturday",
     dateLabel: "January 2, 2027",
@@ -167,6 +167,9 @@ const GALLERY = [
   { src: "assets/img/gallery-10.jpg", alt: "Shruti & Dhruval" },
   { src: "assets/img/gallery-11.jpg", alt: "Shruti & Dhruval" },
   { src: "assets/img/gallery-12.jpg", alt: "Shruti & Dhruval" },
+  { src: "assets/img/gallery-13.jpg", alt: "Shruti & Dhruval" },
+  { src: "assets/img/gallery-14.jpg", alt: "Shruti & Dhruval" },
+  { src: "assets/img/gallery-15.jpg", alt: "Shruti & Dhruval" },
 ];
 
 // Number of "coming soon" placeholder tiles to show alongside GALLERY photos.
