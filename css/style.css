@@ -573,8 +573,9 @@ section {
 }
 
 .hero-dates {
-  font-family: var(--serif);
+  font-family: "Goudy Old Style", "Goudy Type", "Goudy", var(--serif);
   font-size: clamp(16px, 2.4vw, 20px);
+  font-weight: bold;
   color: var(--ink);
   letter-spacing: 0.04em;
   margin-bottom: 6px;
@@ -1089,6 +1090,7 @@ section {
 .form-field input,
 .form-field select,
 .form-field textarea {
+  width: 100%;
   font-family: var(--sans);
   font-size: 14.5px;
   padding: 12px 14px;
@@ -1426,5 +1428,9 @@ footer {
 
   .envelope-tagline {
     font-size: 14px;
+  }
+
+  .rsvp-card {
+    padding: 20px 16px;
   }
 }
