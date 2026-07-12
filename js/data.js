@@ -133,7 +133,7 @@ const EVENTS = [
     venue: "Bel Avenir Banquet",
     address: "Sardar Patel Ring Rd, Near Club Babylon, Near Science City, Sola, Bhadaj, Ahmedabad, Gujarat 382722",
     schedule: [
-      { time: "5:30 PM", label: "Sangeet" },
+      { time: "5:00 PM", label: "Sangeet" },
       { time: "7:30 PM onwards", label: "Dinner" },
     ],
     icon: "reception",

@@ -158,34 +158,54 @@ section {
     transform: translate(-42px, -42px);
   }
 }
-
 .envelope-names {
   position: relative;
   font-family: var(--script);
-  font-size: clamp(38px, 8vw, 60px);
+  font-size: clamp(34px, 7vw, 54px);
   color: var(--maroon-700);
   text-align: center;
+  margin-top: 0;
   margin-bottom: 6px;
   text-shadow: 0 2px 14px rgba(122, 20, 36, 0.12);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.envelope-sub {
+.envelope-eyebrow {
   position: relative;
   text-align: center;
   color: var(--gold-700);
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  font-size: 11px;
-  margin-bottom: 40px;
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 16px;
   opacity: 0.9;
   transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.envelope-heart-wrapper {
+  position: relative;
+  text-align: center;
+  margin-bottom: 18px;
+  opacity: 0.95;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.envelope-heart-img {
+  height: 90px;
+  width: auto;
+  object-fit: contain;
+  display: inline-block;
+  vertical-align: middle;
+  transition: height 0.3s ease;
 }
 
 /* Title text fades out as soon as opening starts, so the rising card never
    has to visually compete with (or get covered by) the names behind it. */
 #envelope-screen.is-opening .envelope-names,
-#envelope-screen.is-opening .envelope-sub {
+#envelope-screen.is-opening .envelope-eyebrow,
+#envelope-screen.is-opening .envelope-heart-wrapper {
   opacity: 0;
   transform: translateY(-14px);
   pointer-events: none;
@@ -194,9 +214,9 @@ section {
 .envelope-wrap {
   position: relative;
   perspective: 1400px;
-  width: min(440px, 88vw);
+  width: min(400px, 86vw);
   aspect-ratio: 3 / 2;
-  margin-bottom: 34px;
+  margin-bottom: 22px;
 }
 
 .envelope {
@@ -329,10 +349,11 @@ section {
 .envelope-tagline {
   position: relative;
   color: var(--ink-soft);
-  font-size: 13px;
+  font-size: 16px;
   letter-spacing: 0.08em;
   opacity: 0.85;
   text-align: center;
+  font-weight: bold;
 }
 
 /* Opening sequence states */
@@ -1381,5 +1402,29 @@ footer {
 
   .family-grid {
     grid-template-columns: 1fr;
+  }
+
+  .envelope-heart-img {
+    height: 70px;
+  }
+
+  .envelope-wrap {
+    margin-bottom: 16px;
+  }
+
+  .envelope-heart-wrapper {
+    margin-bottom: 12px;
+  }
+
+  .envelope-eyebrow {
+    margin-bottom: 12px;
+  }
+
+  .envelope-names {
+    font-size: clamp(28px, 8vw, 42px);
+  }
+
+  .envelope-tagline {
+    font-size: 14px;
   }
 }
