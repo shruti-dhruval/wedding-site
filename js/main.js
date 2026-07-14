@@ -137,7 +137,7 @@ function renderTimeline() {
     ${ev.id === "wedding" ? `
     <div class="timeline-divider">
       <span class="timeline-divider-label">The Big Day</span>
-      <span class="timeline-divider-monogram">S &amp; D</span>
+      <span class="timeline-divider-monogram">${CURRENT_SIDE === "groom" ? "D &amp; S" : "S &amp; D"}</span>
     </div>` : ""}
     <div class="event-card-row${isRight ? " event-card-row--right" : ""}" data-event-id="${ev.id}">
       <div class="event-card">
