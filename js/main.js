@@ -6,8 +6,60 @@
 // See apps-script/Code.gs and README.md for setup instructions.
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyYrQqp3zFRLLWH_0CvlJc7gQp4TLqb75-uScrvF3hzWLFxJueubgnxUgFZ07Z3fkFRhw/exec";
 
+// Which household's events/contacts to show — resolved by the password
+// gate before the rest of the site initializes. "bride" or "groom".
+let CURRENT_SIDE = null;
+let EVENTS = null;
+
+const SIDE_STORAGE_KEY = "wedding-side";
+
 document.addEventListener("DOMContentLoaded", () => {
+  const stored = localStorage.getItem(SIDE_STORAGE_KEY);
+  if (stored === "bride" || stored === "groom") {
+    CURRENT_SIDE = stored;
+    startSite();
+  } else {
+    initSideGate();
+  }
+});
+
+function initSideGate() {
+  const gate = document.getElementById("gate-screen");
+  const form = document.getElementById("gate-form");
+  const input = document.getElementById("gate-password");
+  const error = document.getElementById("gate-error");
+
+  gate.classList.add("active");
+  input.focus();
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const value = input.value.trim().toLowerCase();
+    let side = null;
+    if (value === "shruti") side = "bride";
+    else if (value === "dhruval") side = "groom";
+
+    if (!side) {
+      error.textContent = "Incorrect password. Please try again.";
+      input.value = "";
+      input.focus();
+      return;
+    }
+
+    CURRENT_SIDE = side;
+    localStorage.setItem(SIDE_STORAGE_KEY, side);
+    gate.classList.add("hidden");
+    setTimeout(() => { gate.style.display = "none"; }, 650);
+    startSite();
+  });
+}
+
+function startSite() {
+  EVENTS = CURRENT_SIDE === "groom" ? EVENTS_GROOM : EVENTS_BRIDE;
+  if (CURRENT_SIDE === "groom") document.body.classList.add("side-groom");
+
   renderLogos();
+  renderEnvelope();
   renderHero();
   renderStory();
   renderTimeline();
@@ -19,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initCountdown();
   initNav();
   initRsvpForm();
-});
+}
 
 // ---------------------------------------------------------------------------
 // Rendering
@@ -35,6 +87,17 @@ function renderHero() {
   document.getElementById("hero-icon").innerHTML = iconMarkup("ganesh");
   document.getElementById("hero-parent-bride").textContent = WEDDING.brideLabel;
   document.getElementById("hero-parent-groom").textContent = WEDDING.groomLabel;
+  document.getElementById("hero-dates").textContent =
+    CURRENT_SIDE === "groom" ? WEDDING.dateRangeGroom : WEDDING.dateRange;
+}
+
+function renderEnvelope() {
+  document.getElementById("seal-btn-text").textContent = CURRENT_SIDE === "groom" ? "D&S" : "S&D";
+  document.getElementById("card-monogram").textContent = CURRENT_SIDE === "groom" ? "D & S" : "S & D";
+  document.getElementById("card-date").textContent =
+    CURRENT_SIDE === "groom" ? WEDDING.dateRangeShortGroom : WEDDING.dateRangeShort;
+  document.getElementById("envelope-names").textContent =
+    CURRENT_SIDE === "groom" ? `${WEDDING.groom} & ${WEDDING.bride}` : `${WEDDING.bride} & ${WEDDING.groom}`;
 }
 
 function renderStory() {
@@ -50,8 +113,11 @@ function renderStory() {
 
   const textEl = document.getElementById("story-text");
   if (textEl) {
+    const namesLine = CURRENT_SIDE === "groom"
+      ? `${WEDDING.groom} &amp; ${WEDDING.bride}`
+      : `${WEDDING.bride} &amp; ${WEDDING.groom}`;
     textEl.innerHTML =
-      `<div class="story-names">${WEDDING.bride} &amp; ${WEDDING.groom}</div>` +
+      `<div class="story-names">${namesLine}</div>` +
       OUR_STORY.paragraphs.map((p) => `<p>${p}</p>`).join("");
   }
 
@@ -60,14 +126,20 @@ function renderStory() {
 }
 
 function renderTimeline() {
+  document.getElementById("events-eyebrow").textContent =
+    CURRENT_SIDE === "groom" ? WEDDING.eventsEyebrowGroom : WEDDING.eventsEyebrow;
+
   const timeline = document.getElementById("timeline");
-  timeline.innerHTML = EVENTS.map((ev) => `
+  timeline.innerHTML = EVENTS.map((ev) => {
+    const isRight = ev.id === "musical-mehfil" ||
+      (CURRENT_SIDE === "groom" && ev.id === "manglik-prasango");
+    return `
     ${ev.id === "wedding" ? `
     <div class="timeline-divider">
       <span class="timeline-divider-label">The Big Day</span>
       <span class="timeline-divider-monogram">S &amp; D</span>
     </div>` : ""}
-    <div class="event-card-row${ev.id === "musical-mehfil" ? " event-card-row--right" : ""}" data-event-id="${ev.id}">
+    <div class="event-card-row${isRight ? " event-card-row--right" : ""}" data-event-id="${ev.id}">
       <div class="event-card">
         <div class="event-day">${ev.day}, ${ev.dateLabel}</div>
         <h3 class="event-name">${ev.name}</h3>
@@ -77,7 +149,8 @@ function renderTimeline() {
       <div class="event-icon">${iconMarkup(ev.icon)}</div>
       <div class="event-spacer"></div>
     </div>
-  `).join("");
+  `;
+  }).join("");
 }
 
 function renderSingleVenue(ev) {
@@ -109,7 +182,11 @@ function renderVenueBlocks(ev) {
 
 function renderFamily() {
   const grid = document.getElementById("family-grid");
-  grid.innerHTML = (typeof FAMILY !== "undefined" ? FAMILY : [])
+  const sideOrder = CURRENT_SIDE === "groom" ? ["groom", "bride"] : ["bride", "groom"];
+  const family = (typeof FAMILY !== "undefined" ? FAMILY : [])
+    .slice()
+    .sort((a, b) => sideOrder.indexOf(a.side) - sideOrder.indexOf(b.side));
+  grid.innerHTML = family
     .map((f) => `
       <div class="family-tile">
         <img src="${f.src}" alt="${f.label}" loading="lazy" />
@@ -168,7 +245,8 @@ function renderFooter() {
       WEDDING.blessings.with_best_wishes;
   }
 
-  const contactsHtml = WEDDING.rsvpContacts.map((c) => `
+  const contacts = CURRENT_SIDE === "groom" ? WEDDING.rsvpContactsGroom : WEDDING.rsvpContacts;
+  const contactsHtml = contacts.map((c) => `
     <a href="${whatsappUrl(c)}" target="_blank" rel="noopener">${iconMarkup("whatsapp")} ${c.name}<br>${formatPhone(c.phone)}</a>
   `).join("");
   document.getElementById("footer-contacts").innerHTML = contactsHtml;
@@ -182,9 +260,12 @@ function whatsappUrl(contact) {
 
 function formatPhone(phone) {
   // +17323746989 -> +1 (732) 374-6989
-  const m = phone.match(/^\+1(\d{3})(\d{3})(\d{4})$/);
-  if (!m) return phone;
-  return `+1 (${m[1]}) ${m[2]}-${m[3]}`;
+  const us = phone.match(/^\+1(\d{3})(\d{3})(\d{4})$/);
+  if (us) return `+1 (${us[1]}) ${us[2]}-${us[3]}`;
+  // +919898637980 -> +91 98986 37980
+  const india = phone.match(/^\+91(\d{5})(\d{5})$/);
+  if (india) return `+91 ${india[1]} ${india[2]}`;
+  return phone;
 }
 
 // ---------------------------------------------------------------------------
@@ -294,6 +375,7 @@ function initRsvpForm() {
 
     const formData = new FormData(form);
     const payload = {
+      side: CURRENT_SIDE,
       guestName: formData.get("guestName"),
       familyName: formData.get("familyName"),
       email: formData.get("email"),

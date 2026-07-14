@@ -17,11 +17,25 @@
 
 <body class="no-scroll">
 
+  <!-- ===================== SIDE GATE ===================== -->
+  <div id="gate-screen">
+    <div class="gate-card">
+      <p class="gate-eyebrow">Private Invitation</p>
+      <h1 class="gate-title">Shruti &amp; Dhruval</h1>
+      <p class="gate-sub">Please enter your invitation password to continue</p>
+      <form id="gate-form">
+        <input type="password" id="gate-password" name="gatePassword" placeholder="Password" autocomplete="off" />
+        <button type="submit" class="btn btn-primary">Continue</button>
+      </form>
+      <p class="gate-error" id="gate-error"></p>
+    </div>
+  </div>
+
   <!-- ===================== ENVELOPE INTRO ===================== -->
   <div id="envelope-screen">
     <div class="envelope-bg-pattern"></div>
     <p class="envelope-eyebrow">You are invited</p>
-    <h1 class="envelope-names">Shruti &amp; Dhruval</h1>
+    <h1 class="envelope-names" id="envelope-names">Shruti &amp; Dhruval</h1>
     <div class="envelope-heart-wrapper">
       <img src="assets/img/heart_on_heart_clean.png" alt="Heart on Heart" class="envelope-heart-img" />
     </div>
@@ -30,12 +44,13 @@
       <div class="envelope">
         <div class="envelope-back"></div>
         <div class="card">
-          <div class="card-monogram">S &amp; D</div>
-          <div class="card-date">Dec 30, 2026 – Jan 2, 2027</div>
+          <div class="card-monogram" id="card-monogram">S &amp; D</div>
+          <div class="card-date" id="card-date">Dec 30, 2026 – Jan 2, 2027</div>
         </div>
         <div class="envelope-pocket"></div>
         <div class="envelope-flap"></div>
-        <button class="seal-btn" id="open-envelope-btn" aria-label="Open invitation">S&amp;D</button>
+        <button class="seal-btn" id="open-envelope-btn" aria-label="Open invitation"><span
+            id="seal-btn-text">S&amp;D</span></button>
       </div>
     </div>
 
@@ -70,13 +85,13 @@
           <h1 class="hero-names hero-name-bride">Shruti</h1>
           <p class="hero-parent-label" id="hero-parent-bride"></p>
         </div>
-        <span class="hero-names amp">&amp; </span>
+        <span class="hero-names amp">&amp;</span>
         <div class="hero-name-col">
-          <h1 class="hero-names hero-name-groom"> Dhruval</h1>
+          <h1 class="hero-names hero-name-groom">Dhruval</h1>
           <p class="hero-parent-label" id="hero-parent-groom"></p>
         </div>
       </div>
-      <p class="hero-dates">December 30, 2026 – January 2, 2027</p>
+      <p class="hero-dates" id="hero-dates">December 30, 2026 – January 2, 2027</p>
       <p class="hero-location">Gandhinagar &amp; Ahmedabad, Gujarat</p>
 
       <span class="countdown-label">Count The Moments</span>
@@ -110,7 +125,7 @@
     <!-- Events -->
     <section class="events" id="events">
       <div class="container">
-        <span class="section-eyebrow">December 30 — January 2</span>
+        <span class="section-eyebrow" id="events-eyebrow">December 31 — January 2</span>
         <h2 class="section-title">Wedding Events</h2>
         <div class="timeline" id="timeline"></div>
       </div>

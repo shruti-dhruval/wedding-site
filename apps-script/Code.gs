@@ -16,8 +16,8 @@
 function doPost(e) {
   var sheet = getSheet_();
   var data = JSON.parse(e.postData.contents);
-  ensureHeader_(sheet, data);
-  sheet.appendRow(buildRow_(data));
+  var headers = ensureHeaders_(sheet, data);
+  sheet.appendRow(buildRow_(headers, data));
   return ContentService
     .createTextOutput(JSON.stringify({ status: "ok" }))
     .setMimeType(ContentService.MimeType.JSON);
@@ -35,35 +35,57 @@ function getSheet_() {
 }
 
 function baseHeaders_() {
-  return ["Timestamp", "Guest Name", "Family/Group", "Email", "Phone", "Meal Preference", "Total Guests", "Message"];
+  return ["Timestamp", "Side", "Guest Name", "Family/Group", "Email", "Phone", "Meal Preference", "Total Guests", "Message"];
 }
 
-function ensureHeader_(sheet, data) {
-  if (sheet.getLastRow() > 0) return;
-  var headers = baseHeaders_();
+// Bride-side and groom-side submissions carry different event lists (e.g.
+// bride has Mehndi + Musical Mehfil, groom doesn't), so the header row is
+// grown dynamically and every row is written by column NAME lookup rather
+// than position — this keeps both sides' columns aligned correctly no
+// matter which side's response happens to arrive first.
+function ensureHeaders_(sheet, data) {
+  var eventCols = [];
   (data.events || []).forEach(function (ev) {
-    headers.push(ev.name + " - Attending");
-    headers.push(ev.name + " - Guests");
+    eventCols.push(ev.name + " - Attending");
+    eventCols.push(ev.name + " - Guests");
   });
-  sheet.appendRow(headers);
-  sheet.getRange(1, 1, 1, headers.length).setFontWeight("bold");
-  sheet.setFrozenRows(1);
+
+  if (sheet.getLastRow() === 0) {
+    var headers = baseHeaders_().concat(eventCols);
+    sheet.appendRow(headers);
+    sheet.getRange(1, 1, 1, headers.length).setFontWeight("bold");
+    sheet.setFrozenRows(1);
+    return headers;
+  }
+
+  var lastCol = sheet.getLastColumn();
+  var headers = sheet.getRange(1, 1, 1, lastCol).getValues()[0];
+  var missing = eventCols.filter(function (c) { return headers.indexOf(c) === -1; });
+  if (missing.length) {
+    sheet.getRange(1, headers.length + 1, 1, missing.length).setValues([missing]);
+    sheet.getRange(1, 1, 1, headers.length + missing.length).setFontWeight("bold");
+    headers = headers.concat(missing);
+  }
+  return headers;
 }
 
-function buildRow_(data) {
-  var row = [
-    new Date(),
-    data.guestName || "",
-    data.familyName || "",
-    data.email || "",
-    data.phone || "",
-    data.mealPreference || "",
-    data.totalGuests || "",
-    data.message || "",
-  ];
+function buildRow_(headers, data) {
+  var values = {
+    "Timestamp": new Date(),
+    "Side": data.side === "groom" ? "Groom's Side" : "Bride's Side",
+    "Guest Name": data.guestName || "",
+    "Family/Group": data.familyName || "",
+    "Email": data.email || "",
+    "Phone": data.phone || "",
+    "Meal Preference": data.mealPreference || "",
+    "Total Guests": data.totalGuests || "",
+    "Message": data.message || "",
+  };
   (data.events || []).forEach(function (ev) {
-    row.push(ev.attending ? "Yes" : "No");
-    row.push(ev.attending ? ev.guests || "" : "");
+    values[ev.name + " - Attending"] = ev.attending ? "Yes" : "No";
+    values[ev.name + " - Guests"] = ev.attending ? (ev.guests || "") : "";
   });
-  return row;
+  return headers.map(function (h) {
+    return values.hasOwnProperty(h) ? values[h] : "";
+  });
 }
