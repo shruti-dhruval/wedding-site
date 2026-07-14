@@ -70,6 +70,7 @@ section {
   display: block;
   text-align: center;
   font-family: var(--sans);
+  font-weight: bold;
   letter-spacing: 0.3em;
   text-transform: uppercase;
   font-size: 12px;
@@ -618,60 +619,51 @@ section {
   letter-spacing: 0.35em;
   text-transform: uppercase;
   font-size: 12px;
+  font-weight: bold;
   color: var(--gold-600);
   margin-bottom: 14px;
 }
 
 .hero-names-block {
   display: flex;
-  align-items: baseline;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  gap: 0;
+  gap: 10px;
   margin-bottom: 22px;
-  /* Reserves room for the absolutely-positioned parent labels below each
-     name (see .hero-parent-label) so they don't overlap hero-dates. */
-  padding-bottom: 34px;
 }
 
-.hero-name-col {
-  position: relative;
+.hero-name-row {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* Groom-side visitors see "Dhruval & Shruti" instead of "Shruti & Dhruval" —
-   flip the visual order without touching markup or the underlying data. */
-body.side-groom .hero-names-block > .hero-name-col:first-child { order: 3; }
-body.side-groom .hero-names-block > .hero-names.amp { order: 2; }
-body.side-groom .hero-names-block > .hero-name-col:last-child { order: 1; }
+/* Groom-side visitors see Dhruval's row first — flip the visual order
+   without touching markup or the underlying data. */
+body.side-groom .hero-names-block > .hero-name-row:first-child { order: 3; }
+body.side-groom .hero-names-block > .hero-amp { order: 2; }
+body.side-groom .hero-names-block > .hero-name-row:last-child { order: 1; }
 
-.hero-names {
+.hero-name {
   font-family: var(--script);
-  font-size: clamp(46px, 9vw, 84px);
+  font-size: clamp(36px, 7vw, 58px);
   color: var(--maroon-700);
-  line-height: 1.1;
+  line-height: 1.2;
   margin: 0;
 }
 
-.hero-names.amp {
+.hero-amp {
+  font-family: var(--script);
+  font-size: clamp(28px, 5vw, 42px);
   color: var(--gold-500);
-  padding: 0 10px;
-  line-height: 1.1;
+  line-height: 1.2;
 }
 
-/* Positioned absolutely (rather than stacked in normal flow) so a longer
-   label on one side can't widen its column and throw off the "&" centering
-   between the two names — the column's width is governed by the name alone. */
 .hero-parent-label {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: max-content;
-  max-width: 230px;
   font-family: var(--script);
-  font-size: 17px;
+  font-weight: 700;
+  font-size: 22px;
   color: var(--maroon-600);
   letter-spacing: 0.01em;
   text-align: center;
@@ -700,6 +692,7 @@ body.side-groom .hero-names-block > .hero-name-col:last-child { order: 1; }
   letter-spacing: 0.3em;
   text-transform: uppercase;
   font-size: 12px;
+  font-weight: bold;
   color: var(--gold-600);
   margin-bottom: 16px;
 }
@@ -882,6 +875,7 @@ body.side-groom .hero-names-block > .hero-name-col:last-child { order: 1; }
 .timeline-divider-label {
   display: block;
   font-size: 11px;
+  font-weight: bold;
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--gold-600);
@@ -970,6 +964,7 @@ body.side-groom .hero-names-block > .hero-name-col:last-child { order: 1; }
   letter-spacing: 0.2em;
   text-transform: uppercase;
   font-size: 11px;
+  font-weight: bold;
   color: var(--gold-600);
   margin-bottom: 6px;
 }
@@ -1471,15 +1466,6 @@ footer {
 }
 
 @media (max-width: 640px) {
-  .hero-names-block {
-    padding-bottom: 56px;
-  }
-
-  .hero-parent-label {
-    max-width: 42vw;
-    font-size: 14px;
-  }
-
   .nav-links {
     display: none;
   }

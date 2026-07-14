@@ -85,6 +85,8 @@ function renderLogos() {
 
 function renderHero() {
   document.getElementById("hero-icon").innerHTML = iconMarkup("ganesh");
+  document.getElementById("hero-name-bride").textContent = WEDDING.brideFull;
+  document.getElementById("hero-name-groom").textContent = WEDDING.groomFull;
   document.getElementById("hero-parent-bride").textContent = WEDDING.brideLabel;
   document.getElementById("hero-parent-groom").textContent = WEDDING.groomLabel;
   document.getElementById("hero-dates").textContent =
