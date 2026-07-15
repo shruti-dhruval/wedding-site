@@ -597,7 +597,7 @@ section {
    ========================================================================== */
 
 .hero {
-  padding: 72px 24px 60px;
+  padding: 32px 24px 60px;
   text-align: center;
   background:
     radial-gradient(ellipse at 50% 0%, var(--gold-200) 0%, transparent 60%),
@@ -674,7 +674,7 @@ body.side-groom .hero-names-block>.hero-name-row:last-child {
 .hero-parent-label {
   font-family: "Arial Narrow", var(--sans);
   font-weight: 700;
-  font-size: 22px;
+  font-size: 15px;
   color: var(--maroon-600);
   letter-spacing: 0.01em;
   text-align: center;
