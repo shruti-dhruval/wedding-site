@@ -9,8 +9,8 @@ const WEDDING = {
   groomFull: "Dhruval Shah",
   brideParents: "Mr. Rajendra Patel & Mrs. Meeta Patel",
   groomParents: "Mr. Jigish Shah & Mrs. Vaibhavi Shah",
-  brideLabel: "(Daughter of Meeta Patel & Rajendra Patel)",
-  groomLabel: "(Son of Vaibhavi Shah & Jigish Shah)",
+  brideLabel: "(Daughter of Meeta & Rajendra Patel)",
+  groomLabel: "(Son of Vaibhavi & Jigish Shah)",
   // Countdown target: Wedding, Hasta Melap
   countdownTarget: "2027-01-01T17:30:00+05:30",
   // Function date range shown in the hero and on the envelope card — the
