@@ -672,7 +672,7 @@ body.side-groom .hero-names-block>.hero-name-row:last-child {
 }
 
 .hero-parent-label {
-  font-family: "Calisto MT", var(--serif);
+  font-family: "Arial Narrow", var(--sans);
   font-weight: 700;
   font-size: 22px;
   color: var(--maroon-600);
