@@ -133,7 +133,9 @@ section {
   transition: opacity 0.6s ease, visibility 0.6s ease;
 }
 
-#gate-screen.active { display: flex; }
+#gate-screen.active {
+  display: flex;
+}
 
 #gate-screen.hidden {
   opacity: 0;
@@ -247,6 +249,7 @@ section {
     transform: translate(-42px, -42px);
   }
 }
+
 .envelope-names {
   position: relative;
   font-family: var(--script);
@@ -641,9 +644,17 @@ section {
 
 /* Groom-side visitors see Dhruval's row first — flip the visual order
    without touching markup or the underlying data. */
-body.side-groom .hero-names-block > .hero-name-row:first-child { order: 3; }
-body.side-groom .hero-names-block > .hero-amp { order: 2; }
-body.side-groom .hero-names-block > .hero-name-row:last-child { order: 1; }
+body.side-groom .hero-names-block>.hero-name-row:first-child {
+  order: 3;
+}
+
+body.side-groom .hero-names-block>.hero-amp {
+  order: 2;
+}
+
+body.side-groom .hero-names-block>.hero-name-row:last-child {
+  order: 1;
+}
 
 .hero-name {
   font-family: var(--script);
@@ -661,7 +672,7 @@ body.side-groom .hero-names-block > .hero-name-row:last-child { order: 1; }
 }
 
 .hero-parent-label {
-  font-family: var(--script);
+  font-family: "Centaur", var(--serif);
   font-weight: 700;
   font-size: 22px;
   color: var(--maroon-600);
@@ -961,7 +972,8 @@ body.side-groom .hero-names-block > .hero-name-row:last-child { order: 1; }
 
 
 .event-day {
-  letter-spacing: 0.2em;
+  font-family: "Aptos, var(--sans);
+ letter-spacing: 0.2em;
   text-transform: uppercase;
   font-size: 11px;
   font-weight: bold;
@@ -970,7 +982,8 @@ body.side-groom .hero-names-block > .hero-name-row:last-child { order: 1; }
 }
 
 .event-name {
-  font-family: var(--serif);
+  font-family: "Aptos", var(--sans);
+  font-weight: bold;
   font-size: 24px;
   color: var(--maroon-700);
   margin: 0 0 4px;
