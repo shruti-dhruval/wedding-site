@@ -66,7 +66,7 @@ const EVENTS_BRIDE = [
     address: "Sector 21, Gandhinagar, Gujarat 382021",
     schedule: [
       { time: "2:00 PM", label: "Mehndi" },
-      { time: "5:00 PM onwards", label: "Dinner" },
+      { time: "5:00 PM", label: "Dinner" },
     ],
     icon: "henna",
   },
@@ -96,7 +96,7 @@ const EVENTS_BRIDE = [
         address: "Sector 21, Maharashtra Samaj Bhavan, Gandhinagar, Gujarat 382021",
         schedule: [
           { time: "10:30 AM", label: "Haldi" },
-          { time: "11:30 AM onwards", label: "Lunch" },
+          { time: "11:30 AM", label: "Lunch" },
           { time: "1:00 PM", label: "Grah Shanti" },
           { time: "2:00 PM", label: "Mameru" },
         ],
@@ -115,7 +115,7 @@ const EVENTS_BRIDE = [
     address: "Sector 21, Maharashtra Samaj Bhavan, Gandhinagar, Gujarat 382021",
     schedule: [
       { time: "6:30 PM", label: "Sangeet" },
-      { time: "7:30 PM onwards", label: "Dinner" },
+      { time: "7:30 PM", label: "Dinner" },
     ],
     icon: "music",
   },
@@ -132,7 +132,7 @@ const EVENTS_BRIDE = [
     schedule: [
       { time: "3:00 PM", label: "Jaan Aagman" },
       { time: "5:30 PM", label: "Hasta Melap" },
-      { time: "7:00 PM onwards", label: "Dinner" },
+      { time: "7:00 PM", label: "Dinner" },
       { time: "9:00 PM", label: "Kanya Viday" },
     ],
     icon: "rings",
@@ -149,7 +149,7 @@ const EVENTS_BRIDE = [
     address: "Sardar Patel Ring Rd, Near Club Babylon, Near Science City, Sola, Bhadaj, Ahmedabad, Gujarat 382722",
     schedule: [
       { time: "5:00 PM", label: "Sangeet" },
-      { time: "7:30 PM onwards", label: "Dinner" },
+      { time: "7:30 PM", label: "Dinner" },
     ],
     icon: "reception",
   },
@@ -207,7 +207,7 @@ const EVENTS_GROOM = [
       { time: "2:00 PM", label: "Jaan Prasthan" },
       { time: "3:00 PM", label: "Baraat" },
       { time: "5:30 PM", label: "Hasta Melap" },
-      { time: "7:00 PM onwards", label: "Dinner" },
+      { time: "7:00 PM", label: "Dinner" },
       { time: "9:00 PM", label: "Kanya Viday" },
     ],
     icon: "rings",
@@ -224,7 +224,7 @@ const EVENTS_GROOM = [
     address: "Sardar Patel Ring Rd, Near Club Babylon, Near Science City, Sola, Bhadaj, Ahmedabad, Gujarat 382722",
     schedule: [
       { time: "5:00 PM", label: "Sangeet" },
-      { time: "7:30 PM onwards", label: "Dinner" },
+      { time: "7:30 PM", label: "Dinner" },
     ],
     icon: "reception",
   },
