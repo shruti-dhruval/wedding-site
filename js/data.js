@@ -70,6 +70,7 @@ const EVENTS_BRIDE = [
       { time: "5:00 PM", label: "Dinner" },
     ],
     icon: "henna",
+    mapLink: "https://maps.app.goo.gl/1dAAKhy6y1sLHKqz6?g_st=aw",
   },
   {
     id: "manglik-prasango",
@@ -86,6 +87,7 @@ const EVENTS_BRIDE = [
       {
         venue: "Plot No. 691, Vastunirman Society",
         address: "Sector 21, Gandhinagar, Gujarat 382021",
+        mapLink: "https://maps.app.goo.gl/1dAAKhy6y1sLHKqz6?g_st=aw",
         schedule: [
           { time: "8:00 AM", label: "Ganesh Sthapana" },
           { time: "9:00 AM", label: "Mandap Muhurat" },
@@ -95,6 +97,7 @@ const EVENTS_BRIDE = [
       {
         venue: "The Grand Vinayak",
         address: "Sector 21, Maharashtra Samaj Bhavan, Gandhinagar, Gujarat 382021",
+        mapLink: "https://maps.app.goo.gl/ZwdmHMQa5afUuyQJ7",
         schedule: [
           { time: "10:30 AM", label: "Haldi" },
           { time: "11:30 AM", label: "Lunch" },
@@ -119,6 +122,7 @@ const EVENTS_BRIDE = [
       { time: "7:30 PM", label: "Dinner" },
     ],
     icon: "music",
+    mapLink: "https://maps.app.goo.gl/ZwdmHMQa5afUuyQJ7",
   },
   {
     id: "wedding",
@@ -137,6 +141,7 @@ const EVENTS_BRIDE = [
       { time: "9:00 PM", label: "Kanya Viday" },
     ],
     icon: "rings",
+    mapLink: "https://maps.app.goo.gl/9mmWJrST6KQL5gx5A",
   },
   {
     id: "reception",
@@ -153,6 +158,7 @@ const EVENTS_BRIDE = [
       { time: "7:30 PM", label: "Dinner" },
     ],
     icon: "reception",
+    mapLink: "https://maps.app.goo.gl/Ybp8jRrPmSx1739KA",
   },
 ];
 
@@ -173,8 +179,9 @@ const EVENTS_GROOM = [
     // Vishwakarma Colony, then lunch moves to the banquet hall.
     venues: [
       {
-        venue: "1E Vishwakarma Colony",
-        address: "Opposite Vaibhav Laxmi Temple, Kankaria, Maninagar, Gujarat 380028",
+        venue: "1/E Vishwakarma Colony",
+        address: "Besides Vaibhav Laxmi Mandir, Gordhanwadi Tekra, Near Kankaria Gate No. 1, Ahmedabad, Gujarat 380028",
+        mapLink: "https://maps.app.goo.gl/GBCCfpeDZxtzDhTg9?g_st=aw",
         schedule: [
           { time: "8:00 AM", label: "Mandap Muhurat" },
           { time: "8:30 AM", label: "Ganesh Sthapana" },
@@ -212,6 +219,7 @@ const EVENTS_GROOM = [
       { time: "9:00 PM", label: "Kanya Viday" },
     ],
     icon: "rings",
+    mapLink: "https://maps.app.goo.gl/9mmWJrST6KQL5gx5A",
   },
   {
     id: "reception",
@@ -228,6 +236,7 @@ const EVENTS_GROOM = [
       { time: "7:30 PM", label: "Dinner" },
     ],
     icon: "reception",
+    mapLink: "https://maps.app.goo.gl/Ybp8jRrPmSx1739KA",
   },
 ];
 

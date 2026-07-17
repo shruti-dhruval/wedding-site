@@ -162,7 +162,7 @@ function renderSingleVenue(ev) {
     </ul>
     <p class="event-venue"><strong>${ev.venue}</strong>${ev.address}</p>
     <div class="event-links">
-      <a href="${mapUrl(ev.address)}" target="_blank" rel="noopener">View Map</a>
+      <a href="${ev.mapLink || mapUrl(ev.address)}" target="_blank" rel="noopener">View Map</a>
       <a href="${calendarUrl(ev)}" target="_blank" rel="noopener">Add to Calendar</a>
     </div>
   `;
@@ -176,7 +176,7 @@ function renderVenueBlocks(ev) {
     </ul>
     <p class="event-venue"><strong>${v.venue}</strong>${v.address}</p>
     <div class="event-links">
-      <a href="${mapUrl(`${v.venue}, ${v.address}`)}" target="_blank" rel="noopener">View Map</a>
+      <a href="${v.mapLink || mapUrl(`${v.venue}, ${v.address}`)}" target="_blank" rel="noopener">View Map</a>
       <a href="${calendarUrl({ ...ev, address: v.address, schedule: v.schedule })}" target="_blank" rel="noopener">Add to Calendar</a>
     </div>
   `).join("");
