@@ -45,7 +45,7 @@ const OUR_STORY = {
   heading: "Our Story",
   paragraphs: [
     "Shruti and Dhruval's journey began with a chance introduction in May 2024 through a matrimonial group. What started as a simple friendship soon blossomed into a love neither of them expected, but one they are endlessly grateful for.",
-    "Through countless conversations, shared laughter, memorable trips, and dreams of the future, they discovered in each other a true partner for life. Along the way, they discovered that the strongest relationships are built not through grand gestures, but through life's simplest moments—gentle smiles, whispered jokes, quiet understanding, thoughtful acts of kindness, and the everyday joys that make life truly meaningful.",
+    "Through countless conversations, shared laughter, memorable trips, and dreams of the future, they discovered in each other a true partner for life. Along the way, they learned that the strongest relationships are built not through grand gestures, but through life's simplest moments—gentle smiles, whispered jokes, quiet understanding, thoughtful acts of kindness, and the everyday joys that make life truly meaningful.",
     "Sometimes, the right person arrives when you least expect it, turning ordinary moments into a lifetime of extraordinary memories.",
     "Now, as they begin this new chapter together and promise each other a lifetime of love, laughter, and adventures, they would be honored to have you join them in celebrating the beginning of their forever.",
   ],
