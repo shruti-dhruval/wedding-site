@@ -21,8 +21,8 @@ const WEDDING = {
   dateRangeShortGroom: "Dec 31, 2026 – Jan 2, 2027",
   // Wedding Events section eyebrow — a separate label from dateRange above
   // so it can be edited independently even though the values currently match.
-  eventsEyebrow: "December 30, 2026 – January 2, 2027",
-  eventsEyebrowGroom: "December 31, 2026 – January 2, 2027",
+  eventsEyebrow: "CELEBRATE WITH US",
+  eventsEyebrowGroom: "CELEBRATE WITH US",
   rsvpContacts: [
     { name: "Meeta Patel", phone: "+17323746989" },
     { name: "Rajendra Patel", phone: "+17326554680" },
@@ -44,7 +44,7 @@ const WEDDING = {
 const OUR_STORY = {
   heading: "Our Story",
   paragraphs: [
-    "Shruti and Dhruval's journey began with a chance introduction in May 2024. What started as a simple friendship soon blossomed into a love neither of them expected, but one they are endlessly grateful for.",
+    "Shruti and Dhruval's journey began with a chance introduction in May 2024 through a matrimonial group. What started as a simple friendship soon blossomed into a love neither of them expected, but one they are endlessly grateful for.",
     "Through countless conversations, shared laughter, memorable trips, and dreams of the future, they discovered in each other a true partner for life. Together, they learned that the most beautiful love stories aren't always planned—they simply unfold, one beautiful moment at a time.",
     "Now, as they begin this new chapter together and promise each other a lifetime of love, laughter, adventures, and cherished memories, they would be honored to have you join them in celebrating the beginning of their forever.",
   ],
