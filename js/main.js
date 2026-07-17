@@ -217,11 +217,16 @@ function renderRsvpEvents() {
           <div class="name">${ev.name}</div>
           <div class="meta">${ev.day}, ${ev.dateLabel} </div>
         </div>
-        <label class="toggle">
-          <input type="checkbox" class="event-attend-toggle" name="attend_${ev.id}" />
-          <span class="track"></span>
-          <span class="thumb"></span>
-        </label>
+        <div class="rsvp-toggle-group">
+          <label class="rsvp-toggle-btn">
+            <input type="radio" name="attend_${ev.id}" value="yes" required />
+            <span>Accept</span>
+          </label>
+          <label class="rsvp-toggle-btn">
+            <input type="radio" name="attend_${ev.id}" value="no" required />
+            <span>Decline</span>
+          </label>
+        </div>
       </div>
       <div class="event-choice-guests">
         <label for="guests_${ev.id}">Guests attending</label>
@@ -230,9 +235,11 @@ function renderRsvpEvents() {
     </div>
   `).join("");
 
-  wrap.querySelectorAll(".event-attend-toggle").forEach((toggle) => {
-    toggle.addEventListener("change", (e) => {
-      e.target.closest(".event-choice").classList.toggle("is-attending", e.target.checked);
+  wrap.querySelectorAll("input[type='radio']").forEach((radio) => {
+    radio.addEventListener("change", (e) => {
+      const choiceEl = e.target.closest(".event-choice");
+      const attending = choiceEl.querySelector("input[value='yes']").checked;
+      choiceEl.classList.toggle("is-attending", attending);
     });
   });
 }
@@ -386,12 +393,15 @@ function initRsvpForm() {
       totalGuests: formData.get("totalGuests"),
       message: formData.get("message"),
       submittedAt: new Date().toISOString(),
-      events: EVENTS.map((ev) => ({
-        id: ev.id,
-        name: ev.name,
-        attending: formData.get(`attend_${ev.id}`) === "on",
-        guests: formData.get(`guests_${ev.id}`) || "",
-      })),
+      events: EVENTS.map((ev) => {
+        const attending = formData.get(`attend_${ev.id}`) === "yes";
+        return {
+          id: ev.id,
+          name: ev.name,
+          attending: attending,
+          guests: attending ? (formData.get(`guests_${ev.id}`) || "1") : "0",
+        };
+      }),
     };
 
     submitBtn.disabled = true;
