@@ -856,7 +856,7 @@ body.side-groom .hero-names-block>.hero-name-row:last-child {
    ========================================================================== */
 
 .events {
-  padding: 88px 0;
+  padding: 88px 0 42px;
 }
 
 .timeline {
@@ -909,6 +909,10 @@ body.side-groom .hero-names-block>.hero-name-row:last-child {
   gap: 0;
   margin-bottom: 46px;
   position: relative;
+}
+
+.event-card-row:last-child {
+  margin-bottom: 0;
 }
 
 .event-card-row>* {
