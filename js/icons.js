@@ -8,7 +8,7 @@ const ICONS = {
   om: `<svg viewBox="0 0 64 64"><text x="32" y="46" text-anchor="middle" font-size="48" fill="currentColor">&#2384;</text></svg>`,
   henna: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M32 12c-6 6-6 14 0 18 6-4 6-12 0-18z"/><path d="M20 26c-6 2-9 9-6 15 6 1 12-4 12-10"/><path d="M44 26c6 2 9 9 6 15-6 1-12-4-12-10"/><path d="M26 40c-2 6 1 11 6 12 5-1 8-6 6-12"/><circle cx="32" cy="34" r="2" fill="currentColor" stroke="none"/></svg>`,
   ganesh: `<img src="assets/img/ganesh-icon.png" alt="Ganesh" />`,
-  music: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M24 42V16l24-4v26"/><circle cx="20" cy="44" r="6"/><circle cx="44" cy="38" r="6"/></svg>`,
+  music: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M24 42V16l24-4v26"/><circle cx="20" cy="44" r="4"/><circle cx="44" cy="38" r="4"/></svg>`,
   rings: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="36" r="12"/><circle cx="40" cy="36" r="12"/><path d="M32 12l4 10h-8z"/></svg>`,
   reception: `<img src="assets/img/cheers-icon.png" alt="Reception" />`,
   camera: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="10" y="20" width="44" height="30" rx="4"/><path d="M24 20l4-6h8l4 6"/><circle cx="32" cy="35" r="9"/></svg>`,
