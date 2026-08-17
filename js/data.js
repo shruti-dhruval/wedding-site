@@ -136,6 +136,7 @@ const EVENTS_BRIDE = [
     address: "Sector 11, Opposite Civil Hospital, Gandhinagar, Gujarat 382010",
     schedule: [
       { time: "3:00 PM", label: "Jaan Aagman" },
+      { time: "3:30 PM", label: "High Tea" },
       { time: "5:30 PM", label: "Hasta Melap" },
       { time: "7:00 PM", label: "Dinner" },
       { time: "9:00 PM", label: "Kanya Viday" },
@@ -214,6 +215,7 @@ const EVENTS_GROOM = [
     schedule: [
       { time: "2:00 PM", label: "Jaan Prasthan" },
       { time: "3:00 PM", label: "Baraat" },
+      { time: "3:30 PM", label: "High Tea" },
       { time: "5:30 PM", label: "Hasta Melap" },
       { time: "7:00 PM", label: "Dinner" },
       { time: "9:00 PM", label: "Kanya Viday" },
