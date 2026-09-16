@@ -66,7 +66,7 @@ const EVENTS_BRIDE = [
     venue: "Plot No. 691, Vastunirman Society",
     address: "Sector 21, Gandhinagar, Gujarat 382021",
     schedule: [
-      { time: "2:00 PM", label: "Mehndi" },
+      { time: "3:00 PM", label: "Mehndi" },
       { time: "5:00 PM", label: "Dinner" },
     ],
     icon: "henna",
