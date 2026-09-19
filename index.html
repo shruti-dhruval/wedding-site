@@ -22,9 +22,9 @@
     <div class="gate-card">
       <p class="gate-eyebrow">Private Invitation</p>
       <h1 class="gate-title">Shruti &amp; Dhruval</h1>
-      <p class="gate-sub">Please enter your invitation password to continue</p>
+      <p class="gate-sub">Please enter your invitation code to continue</p>
       <form id="gate-form">
-        <input type="password" id="gate-password" name="gatePassword" placeholder="Password" autocomplete="off" />
+        <input type="text" id="gate-password" name="gatePassword" placeholder="Invitation Code" autocomplete="off" />
         <button type="submit" class="btn btn-primary">Continue</button>
       </form>
       <p class="gate-error" id="gate-error"></p>
@@ -136,31 +136,44 @@
       <div class="container">
         <span class="section-eyebrow">Kindly respond</span>
         <h2 class="section-title">RSVP</h2>
-        <p class="section-sub">We look forward to celebrating this special milestone with our family and friends. Please let us know if you'll be joining us by <strong>November 30, 2026</strong>.</p>
+        <p class="section-sub">We look forward to celebrating this special milestone with our family and friends. Please
+          let us know if you'll be joining us by <strong>November 30, 2026</strong>.</p>
         <p class="section-sub">Your presence is our greatest present.</p>
 
         <form class="rsvp-card" id="rsvp-form">
-          <h3 class="rsvp-section-title">Your Details</h3>
-          <div class="form-field">
-            <label for="guest-name">Full Name *</label>
-            <input type="text" id="guest-name" name="guestName" required placeholder="Your full name" />
-          </div>
-          <div class="form-row">
+          <h3 class="rsvp-section-title">Find Your Invitation</h3>
+          <div class="form-row rsvp-lookup-row">
             <div class="form-field">
-              <label for="guest-email">Email *</label>
-              <input type="email" id="guest-email" name="email" required placeholder="you@example.com" />
+              <label for="guest-phone">Phone Number *</label>
+              <input type="tel" id="guest-phone" name="phone" required placeholder="e.g. 98986 37980" inputmode="tel"
+                autocomplete="tel" />
             </div>
-            <div class="form-field">
-              <label for="guest-phone">Phone</label>
-              <input type="tel" id="guest-phone" name="phone" placeholder="+1 555 555 5555" />
+            <div class="form-field rsvp-lookup-btn-field">
+              <span class="rsvp-lookup-btn-spacer" aria-hidden="true">&nbsp;</span>
+              <button type="button" class="btn btn-outline rsvp-lookup-btn" id="rsvp-lookup-btn">Find My Invite</button>
             </div>
           </div>
+          <div class="rsvp-lookup-status" id="rsvp-lookup-status"></div>
 
-          <h3 class="rsvp-section-title">Which events will you join? *</h3>
-          <div id="rsvp-events"></div>
+          <div class="rsvp-family-card" id="rsvp-family-card" hidden></div>
 
-          <h3 class="rsvp-section-title">Additional Info</h3>
-          <div class="form-row">
+          <div class="rsvp-form-body" id="rsvp-form-body" hidden>
+            <h3 class="rsvp-section-title">Your Details</h3>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="guest-name">Full Name *</label>
+                <input type="text" id="guest-name" name="guestName" required placeholder="Your full name" />
+              </div>
+              <div class="form-field">
+                <label for="guest-email">Email</label>
+                <input type="email" id="guest-email" name="email" placeholder="you@example.com" />
+              </div>
+            </div>
+
+            <h3 class="rsvp-section-title">Which events will you join? *</h3>
+            <div id="rsvp-events"></div>
+
+            <h3 class="rsvp-section-title">Additional Info</h3>
             <div class="form-field">
               <label for="guest-meal">Meal Preference</label>
               <select id="guest-meal" name="mealPreference">
@@ -169,17 +182,14 @@
               </select>
             </div>
             <div class="form-field">
-              <label for="guest-total">Total Guests (including you)</label>
-              <input type="number" id="guest-total" name="totalGuests" min="1" value="1" />
+              <label for="guest-message">Message / Wishes</label>
+              <textarea id="guest-message" name="message"
+                placeholder="Leave a note for the couple (optional)"></textarea>
             </div>
-          </div>
-          <div class="form-field">
-            <label for="guest-message">Message / Wishes</label>
-            <textarea id="guest-message" name="message" placeholder="Leave a note for the couple (optional)"></textarea>
-          </div>
 
-          <button type="submit" class="btn btn-primary rsvp-submit" id="rsvp-submit-btn">Send RSVP</button>
-          <div class="rsvp-status" id="rsvp-status"></div>
+            <button type="submit" class="btn btn-primary rsvp-submit" id="rsvp-submit-btn">Send RSVP</button>
+            <div class="rsvp-status" id="rsvp-status"></div>
+          </div>
         </form>
       </div>
     </section>

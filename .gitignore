@@ -1,0 +1,10 @@
+# WhatsApp sender secrets / local session / deps
+whatsapp-sender/node_modules/
+whatsapp-sender/config.json
+whatsapp-sender/.wwebjs_auth/
+whatsapp-sender/.wwebjs_cache/
+whatsapp-sender/*.log
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db

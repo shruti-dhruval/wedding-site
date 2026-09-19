@@ -4,21 +4,27 @@
 
 // EDIT ME: paste your deployed Google Apps Script Web App URL here.
 // See apps-script/Code.gs and README.md for setup instructions.
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyYrQqp3zFRLLWH_0CvlJc7gQp4TLqb75-uScrvF3hzWLFxJueubgnxUgFZ07Z3fkFRhw/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxV4StTA_P1TAEQInAIv0uym-jkHKVe6fe1UrFEIJPfJhZbzy5bg4JxL9mjNuP8fVpO6A/exec";
 
-// Which household's events/contacts to show — resolved by the password
-// gate before the rest of the site initializes. "bride" or "groom".
+// Which household's events/contacts to show, and which events they're
+// invited to — resolved from the invite code entered at the gate.
+let CURRENT_CODE = null;
 let CURRENT_SIDE = null;
+let CURRENT_EVENT_IDS = null;
 let EVENTS = null;
 
-const SIDE_STORAGE_KEY = "wedding-side";
+const CODE_STORAGE_KEY = "wedding-code";
 
 document.addEventListener("DOMContentLoaded", () => {
-  const stored = localStorage.getItem(SIDE_STORAGE_KEY);
-  if (stored === "bride" || stored === "groom") {
-    CURRENT_SIDE = stored;
+  const storedCode = localStorage.getItem(CODE_STORAGE_KEY);
+  const entry = storedCode && INVITE_CODES[storedCode];
+  if (entry) {
+    CURRENT_CODE = storedCode;
+    CURRENT_SIDE = entry.side;
+    CURRENT_EVENT_IDS = entry.events;
     startSite();
   } else {
+    if (storedCode) localStorage.removeItem(CODE_STORAGE_KEY);
     initSideGate();
   }
 });
@@ -34,20 +40,20 @@ function initSideGate() {
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    const value = input.value.trim().toLowerCase();
-    let side = null;
-    if (value === "shruti") side = "bride";
-    else if (value === "dhruval") side = "groom";
+    const code = input.value.trim().toUpperCase();
+    const entry = INVITE_CODES[code];
 
-    if (!side) {
-      error.textContent = "Incorrect password. Please try again.";
+    if (!entry) {
+      error.textContent = "Incorrect code. Please try again.";
       input.value = "";
       input.focus();
       return;
     }
 
-    CURRENT_SIDE = side;
-    localStorage.setItem(SIDE_STORAGE_KEY, side);
+    CURRENT_CODE = code;
+    CURRENT_SIDE = entry.side;
+    CURRENT_EVENT_IDS = entry.events;
+    localStorage.setItem(CODE_STORAGE_KEY, code);
     gate.classList.add("hidden");
     setTimeout(() => { gate.style.display = "none"; }, 650);
     startSite();
@@ -55,7 +61,10 @@ function initSideGate() {
 }
 
 function startSite() {
-  EVENTS = CURRENT_SIDE === "groom" ? EVENTS_GROOM : EVENTS_BRIDE;
+  const sourceEvents = CURRENT_SIDE === "groom" ? EVENTS_GROOM : EVENTS_BRIDE;
+  EVENTS = CURRENT_EVENT_IDS
+    .map((id) => sourceEvents.find((ev) => ev.id === id) || EVENTS_BRIDE.find((ev) => ev.id === id))
+    .filter(Boolean);
   if (CURRENT_SIDE === "groom") document.body.classList.add("side-groom");
 
   renderLogos();
@@ -127,21 +136,49 @@ function renderStory() {
   if (grid && !textEl) grid.classList.add("story-grid--image-only");
 }
 
+function getEventCardSide(eventId) {
+  // For LOVE and DIL (or bride codes where Mehndi is not included),
+  // Vidhi (Manglik Prasango) and Sangeet (Musical Mehfil) appear on the left
+  // since they are on the same day (Dec 31).
+  if (CURRENT_CODE === "LOVE" || CURRENT_CODE === "DIL" || (CURRENT_SIDE === "bride" && !CURRENT_EVENT_IDS.includes("mehndi"))) {
+    if (eventId === "manglik-prasango" || eventId === "musical-mehfil") return "left";
+    if (eventId === "wedding") return "right";
+    if (eventId === "reception") return "left";
+  }
+
+  // For MILAN (bride side with Mehndi):
+  // Mehndi (Dec 30) is on the left; Vidhi & Sangeet (Dec 31) are on the right.
+  // Wedding is on the left, Reception is on the right.
+  if (CURRENT_SIDE === "bride") {
+    if (eventId === "mehndi") return "left";
+    if (eventId === "manglik-prasango" || eventId === "musical-mehfil") return "right";
+    if (eventId === "wedding") return "left";
+    if (eventId === "reception") return "right";
+  }
+
+  // For Groom's side (MIL, OM, ISHQ):
+  // Vidhi & Sangeet (Dec 31) on the right; Wedding is on the left, Reception is on the right.
+  if (eventId === "manglik-prasango" || eventId === "musical-mehfil") return "right";
+  if (eventId === "wedding") return "left";
+  if (eventId === "reception") return "right";
+
+  return "left";
+}
+
 function renderTimeline() {
   document.getElementById("events-eyebrow").textContent =
     CURRENT_SIDE === "groom" ? WEDDING.eventsEyebrowGroom : WEDDING.eventsEyebrow;
 
   const timeline = document.getElementById("timeline");
   timeline.innerHTML = EVENTS.map((ev) => {
-    const isRight = ev.id === "musical-mehfil" ||
-      (CURRENT_SIDE === "groom" && ev.id === "manglik-prasango");
+    const sideClass = getEventCardSide(ev.id) === "right" ? " event-card-row--right" : " event-card-row--left";
     return `
     ${ev.id === "wedding" ? `
     <div class="timeline-divider">
       <span class="timeline-divider-label">The Big Day</span>
       <span class="timeline-divider-monogram">${CURRENT_SIDE === "groom" ? "D &amp; S" : "S &amp; D"}</span>
     </div>` : ""}
-    <div class="event-card-row${isRight ? " event-card-row--right" : ""}" data-event-id="${ev.id}">
+    <div class="event-card-row${sideClass}" data-event-id="${ev.id}">
       <div class="event-card">
         <div class="event-day">${ev.day}, ${ev.dateLabel}</div>
         <h3 class="event-name">${ev.name}</h3>
@@ -365,10 +402,126 @@ function initNav() {
 }
 
 // ---------------------------------------------------------------------------
+// RSVP: phone lookup
+// ---------------------------------------------------------------------------
+
+// Set once a phone lookup succeeds — just used to prefill the form; the
+// server independently re-checks the submitted phone against the Guests
+// sheet, so nothing here needs to be trusted at submit time.
+let MATCHED_GUEST = null;
+// Bound to the lookup form's internal reset function once initRsvpLookup()
+// runs, so initRsvpForm's submit handler can fully reset the lookup step
+// after a successful RSVP without reaching into initRsvpLookup's closure.
+let resetRsvpLookup = null;
+
+function initRsvpLookup() {
+  const phoneInput = document.getElementById("guest-phone");
+  const lookupBtn = document.getElementById("rsvp-lookup-btn");
+  const lookupStatus = document.getElementById("rsvp-lookup-status");
+  const familyCard = document.getElementById("rsvp-family-card");
+  const formBody = document.getElementById("rsvp-form-body");
+  const nameInput = document.getElementById("guest-name");
+
+  // The button does double duty (Find My Invite / Change Number). A single
+  // flag routes its one click listener to the right handler, rather than
+  // juggling addEventListener + onclick reassignment (which would both fire).
+  let isLookedUp = false;
+
+  lookupBtn.addEventListener("click", () => { isLookedUp ? resetLookup() : runLookup(); });
+  phoneInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") { e.preventDefault(); if (!isLookedUp) runLookup(); }
+  });
+
+  async function runLookup() {
+    const phone = phoneInput.value.trim();
+    if (!phone) {
+      lookupStatus.textContent = "Please enter your phone number.";
+      lookupStatus.className = "rsvp-lookup-status show error";
+      return;
+    }
+
+    if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL.includes("PASTE_YOUR")) {
+      lookupStatus.textContent = "RSVP backend isn't connected yet. See README.md to set it up.";
+      lookupStatus.className = "rsvp-lookup-status show error";
+      return;
+    }
+
+    lookupBtn.disabled = true;
+    lookupBtn.textContent = "Searching...";
+    lookupStatus.className = "rsvp-lookup-status";
+    familyCard.hidden = true;
+
+    try {
+      const res = await fetch(`${GOOGLE_SCRIPT_URL}?action=lookup&phone=${encodeURIComponent(phone)}`);
+      const data = await res.json();
+
+      if (data.found) {
+        MATCHED_GUEST = data;
+        showFamilyCard(data);
+        nameInput.value = [data.firstName, data.lastName].filter(Boolean).join(" ");
+        lookupStatus.textContent = "";
+        lookupStatus.className = "rsvp-lookup-status";
+      } else {
+        MATCHED_GUEST = null;
+        familyCard.hidden = true;
+        lookupStatus.textContent = "We couldn't find that number on our guest list — no worries, just fill in your details below and we'll add you.";
+        lookupStatus.className = "rsvp-lookup-status show info";
+      }
+      formBody.hidden = false;
+      phoneInput.readOnly = true;
+      lookupBtn.textContent = "Change Number";
+      lookupBtn.disabled = false;
+      isLookedUp = true;
+      formBody.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    } catch (err) {
+      lookupStatus.textContent = "Something went wrong looking up your number. Please try again, or just fill in the form below.";
+      lookupStatus.className = "rsvp-lookup-status show error";
+      formBody.hidden = false;
+      lookupBtn.disabled = false;
+      lookupBtn.textContent = "Find My Invite";
+    }
+  }
+
+  function resetLookup() {
+    MATCHED_GUEST = null;
+    isLookedUp = false;
+    phoneInput.value = "";
+    phoneInput.readOnly = false;
+    familyCard.hidden = true;
+    formBody.hidden = true;
+    lookupStatus.textContent = "";
+    lookupStatus.className = "rsvp-lookup-status";
+    lookupBtn.textContent = "Find My Invite";
+    lookupBtn.disabled = false;
+  }
+  resetRsvpLookup = resetLookup;
+
+  function showFamilyCard(data) {
+    const members = [`${data.firstName} ${data.lastName}`.trim()];
+    if (data.spouseName) members.push(data.spouseName);
+    (data.children || []).forEach((c) => members.push(c));
+
+    familyCard.innerHTML = `
+      <p class="rsvp-family-eyebrow">We found your invitation</p>
+      <h4 class="rsvp-family-name">${escapeHtml(data.familyLabel || "Your Family")}</h4>
+      <ul class="rsvp-family-members">
+        ${members.map((m) => `<li>${escapeHtml(m)}</li>`).join("")}
+      </ul>
+      ${data.rsvpStatus === "Responded"
+        ? `<p class="rsvp-family-note">You've already responded${data.rsvpSummary ? `: ${escapeHtml(data.rsvpSummary)}` : ""}. Submitting again will update your response.</p>`
+        : ""}
+    `;
+    familyCard.hidden = false;
+  }
+}
+
+// ---------------------------------------------------------------------------
 // RSVP form submission
 // ---------------------------------------------------------------------------
 
 function initRsvpForm() {
+  initRsvpLookup();
+
   const form = document.getElementById("rsvp-form");
   const statusEl = document.getElementById("rsvp-status");
   const submitBtn = document.getElementById("rsvp-submit-btn");
@@ -384,13 +537,12 @@ function initRsvpForm() {
 
     const formData = new FormData(form);
     const payload = {
+      action: "rsvp",
       side: CURRENT_SIDE,
       guestName: formData.get("guestName"),
-      familyName: formData.get("familyName"),
       email: formData.get("email"),
       phone: formData.get("phone"),
       mealPreference: formData.get("mealPreference"),
-      totalGuests: formData.get("totalGuests"),
       message: formData.get("message"),
       submittedAt: new Date().toISOString(),
       events: EVENTS.map((ev) => {
@@ -417,6 +569,7 @@ function initRsvpForm() {
       showStatus(statusEl, "success", `Thank you, ${payload.guestName || "friend"}! Your RSVP has been received. We can't wait to celebrate with you.`);
       form.reset();
       document.querySelectorAll(".event-choice.is-attending").forEach((el) => el.classList.remove("is-attending"));
+      if (resetRsvpLookup) resetRsvpLookup();
     } catch (err) {
       showStatus(statusEl, "error", "Something went wrong sending your RSVP. Please try again, or call us directly — see contact numbers below.");
     } finally {
@@ -430,6 +583,15 @@ function showStatus(el, type, message) {
   el.textContent = message;
   el.className = `rsvp-status show ${type}`;
   el.scrollIntoView({ behavior: "smooth", block: "nearest" });
+}
+
+function escapeHtml(value) {
+  return String(value == null ? "" : value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 }
 
 // ---------------------------------------------------------------------------

@@ -66,8 +66,8 @@ const EVENTS_BRIDE = [
     venue: "Plot No. 691, Vastunirman Society",
     address: "Sector 21, Gandhinagar, Gujarat 382021",
     schedule: [
-      { time: "3:00 PM", label: "Mehndi" },
-      { time: "5:00 PM", label: "Dinner" },
+      { time: "3:30 PM", label: "Mehndi" },
+      { time: "5:30 PM", label: "Dinner" },
     ],
     icon: "henna",
     mapLink: "https://maps.app.goo.gl/1dAAKhy6y1sLHKqz6?g_st=aw",
@@ -118,8 +118,8 @@ const EVENTS_BRIDE = [
     venue: "The Grand Vinayak",
     address: "Sector 21, Maharashtra Samaj Bhavan, Gandhinagar, Gujarat 382021",
     schedule: [
-      { time: "6:30 PM", label: "Sangeet" },
-      { time: "7:30 PM", label: "Dinner" },
+      { time: "6:30 PM", label: "Dinner" },
+      { time: "7:00 PM", label: "Sangeet/Garba" },
     ],
     icon: "music",
     mapLink: "https://maps.app.goo.gl/ZwdmHMQa5afUuyQJ7",
@@ -242,16 +242,36 @@ const EVENTS_GROOM = [
   },
 ];
 
+// Invite codes: each maps to a side (which controls names/contacts/labels)
+// and the subset of event ids that household is invited to.
+const INVITE_CODES = {
+  // Shruti's side (Bride)
+  // All 5 (Mehndi, Vidhi, Sangeet, Marriage, Reception)
+  MILAN: { side: "bride", events: ["mehndi", "manglik-prasango", "musical-mehfil", "wedding", "reception"] },
+  // 4 events (Vidhi, Sangeet, Marriage, Reception)
+  LOVE: { side: "bride", events: ["manglik-prasango", "musical-mehfil", "wedding", "reception"] },
+  // 3 events (Vidhi, Sangeet, Marriage)
+  DIL: { side: "bride", events: ["manglik-prasango", "musical-mehfil", "wedding"] },
+
+  // Dhruval's side (Groom)
+  // All 3 (Vidhi, Marriage, Reception)
+  MIL: { side: "groom", events: ["manglik-prasango", "wedding", "reception"] },
+  // 2 events (Vidhi, Marriage)
+  OM: { side: "groom", events: ["manglik-prasango", "wedding"] },
+  // 4 events (Vidhi, Sangeet, Marriage, Reception)
+  ISHQ: { side: "groom", events: ["manglik-prasango", "musical-mehfil", "wedding", "reception"] },
+};
+
 // Family photos shown in the "Our Family" section, each with its own label.
 // "side" controls row order: bride-side visitors see Shruti's family first,
 // groom-side visitors see Dhruval's family first.
 const FAMILY = [
   { src: "assets/img/family-shruti-parents.jpg", label: "Shruti's Parents<br>(Meeta & Rajendra)", side: "bride" },
-  { src: "assets/img/family-shruti-grandparents-1.jpg", label: "Shruti's Paternal Grandparents<br> (Sushilaben & Bhagubhai)", side: "bride" },
-  { src: "assets/img/family-shruti-grandparents-2.jpg", label: "Shruti's Maternal Grandparents<br> (Kalavatiben & Ravjibhai)", side: "bride" },
+  { src: "assets/img/family-shruti-grandparents-1.jpg", label: "Shruti's Paternal Grandparents<br> (Sushilaben & Late Bhagubhai)", side: "bride" },
+  { src: "assets/img/family-shruti-grandparents-2.jpg", label: "Shruti's Maternal Grandparents<br> (Kalavatiben & Late Ravjibhai)", side: "bride" },
   { src: "assets/img/family-shruti-brother.jpg", label: "Shruti's Brother<br>(Ved)", side: "bride" },
   { src: "assets/img/family-dhruval-parents.jpg", label: "Dhruval's Parents<br>(Vaibhavi & Jigish)", side: "groom" },
-  { src: "assets/img/family-dhruval-grandparents-1.jpg", label: "Dhruval's Paternal Grandparents<br>(Padmaben & Sureshbhai)", side: "groom" },
+  { src: "assets/img/family-dhruval-grandparents-1.jpg", label: "Dhruval's Paternal Grandparents<br>(Padmaben & Late Sureshbhai)", side: "groom" },
   { src: "assets/img/family-dhruval-grandparents-2.jpg", label: "Dhruval's Maternal Grandparents<br> (Hansaben & Pravinchandra)", side: "groom" },
   { src: "assets/img/family-dhruval-brother-sil.jpg", label: "Dhruval's Brother & Sister-in-Law<br> (Dakshal & Himadri)", side: "groom" },
 ];

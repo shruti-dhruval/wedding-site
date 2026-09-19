@@ -971,8 +971,16 @@ body.side-groom .hero-names-block>.hero-name-row:last-child {
   grid-column: 1;
 }
 
-/* Force specific card to the right on desktop only to avoid breaking mobile layouts */
+/* Desktop left/right positioning for event cards */
 @media (min-width: 861px) {
+  .event-card-row--left .event-card {
+    grid-column: 1 !important;
+  }
+
+  .event-card-row--left .event-spacer {
+    grid-column: 3 !important;
+  }
+
   .event-card-row--right .event-card {
     grid-column: 3 !important;
   }
@@ -1249,6 +1257,92 @@ body.side-groom .hero-names-block>.hero-name-row:last-child {
 
 .rsvp-section-title:first-of-type {
   margin-top: 0;
+}
+
+.rsvp-lookup-row {
+  align-items: end;
+}
+
+.rsvp-lookup-btn-field {
+  flex-shrink: 0;
+}
+
+.rsvp-lookup-btn-spacer {
+  display: block;
+  font-size: 12px;
+  height: 16px;
+}
+
+.rsvp-lookup-btn {
+  width: 100%;
+  white-space: nowrap;
+  padding: 12px 24px;
+}
+
+.rsvp-lookup-status {
+  margin: -6px 0 18px;
+  font-size: 13px;
+  display: none;
+}
+
+.rsvp-lookup-status.show {
+  display: block;
+}
+
+.rsvp-lookup-status.error {
+  color: #8a2b2b;
+}
+
+.rsvp-lookup-status.info {
+  color: var(--ink-soft);
+}
+
+.rsvp-family-card {
+  background: var(--cream-50);
+  border: 1px solid var(--gold-400);
+  border-radius: 12px;
+  padding: 18px 22px;
+  margin-bottom: 24px;
+}
+
+.rsvp-family-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-700);
+  margin: 0 0 4px;
+}
+
+.rsvp-family-name {
+  font-family: var(--serif);
+  font-size: 20px;
+  color: var(--maroon-700);
+  margin: 0 0 10px;
+}
+
+.rsvp-family-members {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+}
+
+.rsvp-family-members li {
+  font-size: 13px;
+  background: var(--ivory);
+  border: 1px solid var(--gold-300);
+  border-radius: 999px;
+  padding: 5px 14px;
+  color: var(--ink);
+}
+
+.rsvp-family-note {
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  margin: 12px 0 0;
+  font-style: italic;
 }
 
 .event-choice {

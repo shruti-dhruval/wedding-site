@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — Shruti &amp; Dhruval Wedding</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="admin/admin.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+
+<body class="admin-body">
+
+  <!-- ===================== TOKEN GATE ===================== -->
+  <div id="admin-gate" class="admin-gate">
+    <div class="admin-gate-card">
+      <p class="gate-eyebrow">Admin Access</p>
+      <h1 class="admin-gate-title">Shruti &amp; Dhruval — Admin Panel</h1>
+      <p class="gate-sub">Enter your Apps Script Web App URL and admin token to continue.</p>
+      <form id="admin-gate-form">
+        <div class="form-field">
+          <label for="admin-script-url">Apps Script Web App URL</label>
+          <input type="url" id="admin-script-url" placeholder="https://script.google.com/macros/s/.../exec" required autocomplete="off" />
+        </div>
+        <div class="form-field">
+          <label for="admin-token-input">Admin Token</label>
+          <input type="password" id="admin-token-input" placeholder="The ADMIN_TOKEN you set in Script Properties" required autocomplete="off" />
+        </div>
+        <button type="submit" class="btn btn-primary">Unlock Admin Panel</button>
+      </form>
+      <p class="gate-error" id="admin-gate-error"></p>
+    </div>
+  </div>
+
+  <!-- ===================== ADMIN PANEL ===================== -->
+  <div id="admin-panel" class="admin-panel" hidden>
+    <header class="admin-header">
+      <div class="admin-header-inner">
+        <h1>Shruti &amp; Dhruval — Admin</h1>
+        <button class="btn btn-outline admin-lock-btn" id="admin-lock-btn">Lock</button>
+      </div>
+      <nav class="admin-tabs">
+        <button class="admin-tab is-active" data-tab="guests">Guests</button>
+        <button class="admin-tab" data-tab="rsvps">RSVPs</button>
+        <button class="admin-tab" data-tab="messages">Messages</button>
+      </nav>
+    </header>
+
+    <main class="admin-main">
+
+      <!-- ===================== GUESTS TAB ===================== -->
+      <section class="admin-tab-panel is-active" id="tab-guests">
+        <div class="admin-card">
+          <h2>Upload Guest List</h2>
+          <p class="admin-hint">Upload an Excel/CSV file with columns for phone number, first name, last
+            name, spouse's name, children's names, and number of guests. Existing guests (matched by phone
+            number) are updated in place; new phone numbers are added.</p>
+          <input type="file" id="guest-file-input" accept=".xlsx,.xls,.csv" />
+          <div id="guest-mapping" class="guest-mapping" hidden></div>
+          <div id="guest-preview-wrap" class="admin-table-wrap" hidden>
+            <h3>Preview</h3>
+            <div class="admin-table-scroll"><table id="guest-preview-table" class="admin-table"></table></div>
+            <button class="btn btn-primary" id="guest-upload-btn">Upload Guests to Sheet</button>
+            <span id="guest-upload-result" class="admin-inline-status"></span>
+          </div>
+        </div>
+
+        <div class="admin-card">
+          <div class="admin-card-head">
+            <h2>Guest List <span id="guest-count-badge" class="admin-badge"></span></h2>
+            <div class="admin-card-actions">
+              <input type="search" id="guest-search" placeholder="Search name or phone..." />
+              <button class="btn btn-outline" id="guest-refresh-btn">Refresh</button>
+            </div>
+          </div>
+          <div class="admin-table-scroll"><table id="guests-table" class="admin-table"></table></div>
+        </div>
+      </section>
+
+      <!-- ===================== RSVPS TAB ===================== -->
+      <section class="admin-tab-panel" id="tab-rsvps">
+        <div class="admin-card">
+          <div class="admin-card-head">
+            <h2>RSVP Summary</h2>
+            <button class="btn btn-outline" id="rsvp-refresh-btn">Refresh</button>
+          </div>
+          <div id="rsvp-summary-cards" class="admin-summary-cards"></div>
+        </div>
+        <div class="admin-card">
+          <h2>Responses <span id="rsvp-count-badge" class="admin-badge"></span></h2>
+          <div class="admin-table-scroll"><table id="rsvps-table" class="admin-table"></table></div>
+        </div>
+        <div class="admin-card">
+          <h2>Unregistered Walk-ins <span id="unreg-count-badge" class="admin-badge"></span></h2>
+          <p class="admin-hint">RSVPs from phone numbers not found on the guest list.</p>
+          <div class="admin-table-scroll"><table id="unregistered-table" class="admin-table"></table></div>
+        </div>
+      </section>
+
+      <!-- ===================== MESSAGES TAB ===================== -->
+      <section class="admin-tab-panel" id="tab-messages">
+        <div class="admin-card">
+          <h2>Compose Bulk Message</h2>
+          <p class="admin-hint">
+            Use <code>{firstName}</code>, <code>{lastName}</code>, <code>{familyName}</code> and
+            <code>{link}</code> — each gets replaced per recipient before the message is queued.
+          </p>
+          <div class="form-field">
+            <label for="message-link">Site link (fills {link})</label>
+            <input type="url" id="message-link" placeholder="https://your-wedding-site.com" />
+          </div>
+          <div class="form-field">
+            <label for="message-template">Message</label>
+            <textarea id="message-template" rows="6" placeholder="Hi {firstName}! You're invited to Shruti & Dhruval's wedding. Please RSVP here: {link}"></textarea>
+          </div>
+          <div class="admin-preview-box" id="message-preview"></div>
+        </div>
+
+        <div class="admin-card">
+          <div class="admin-card-head">
+            <h2>Recipients <span id="recipient-count-badge" class="admin-badge"></span></h2>
+            <div class="admin-card-actions">
+              <button class="btn btn-outline" data-filter="all">All</button>
+              <button class="btn btn-outline" data-filter="none">None</button>
+              <button class="btn btn-outline" data-filter="not-responded">Not Responded</button>
+              <button class="btn btn-outline" data-filter="responded">Responded</button>
+              <button class="btn btn-outline" id="recipients-refresh-btn">Refresh</button>
+            </div>
+          </div>
+          <div class="admin-table-scroll"><table id="recipients-table" class="admin-table"></table></div>
+          <button class="btn btn-primary" id="queue-messages-btn">Queue Messages for Selected Recipients</button>
+          <span id="queue-result" class="admin-inline-status"></span>
+          <p class="admin-hint">Queuing doesn't send anything — it stores the message in the sheet. Run
+            the <code>whatsapp-sender</code> script on your computer (scan the WhatsApp QR code once) to
+            actually send the queued messages. See <code>whatsapp-sender/README.md</code>.</p>
+        </div>
+
+        <div class="admin-card">
+          <div class="admin-card-head">
+            <h2>Message Log</h2>
+            <button class="btn btn-outline" id="log-refresh-btn">Refresh</button>
+          </div>
+          <div class="admin-summary-cards" id="message-summary-cards"></div>
+          <div class="admin-table-scroll"><table id="message-log-table" class="admin-table"></table></div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="admin/admin.js"></script>
+</body>
+
+</html>
