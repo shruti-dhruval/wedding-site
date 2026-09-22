@@ -136,7 +136,7 @@ const EVENTS_BRIDE = [
     address: "Sector 11, Opposite Civil Hospital, Gandhinagar, Gujarat 382010",
     schedule: [
       { time: "3:00 PM", label: "Jaan Aagman" },
-      { time: "3:30 PM", label: "High Tea" },
+      { time: "4:00 PM", label: "High Tea" },
       { time: "5:30 PM", label: "Hasta Melap" },
       { time: "7:00 PM", label: "Dinner" },
       { time: "9:00 PM", label: "Kanya Viday" },
@@ -155,7 +155,9 @@ const EVENTS_BRIDE = [
     venue: "Bel Avenir Banquet",
     address: "Sardar Patel Ring Rd, Near Club Babylon, Near Science City, Sola, Bhadaj, Ahmedabad, Gujarat 382722",
     schedule: [
-      { time: "5:00 PM", label: "Sangeet" },
+      { time: "4:30 PM", label: "Cocktails" },
+      { time: "5:00 PM", label: "Family Performances" },
+      { time: "7:00 PM", label: "Teaser Film" },
       { time: "7:30 PM", label: "Dinner" },
     ],
     icon: "reception",
@@ -215,7 +217,7 @@ const EVENTS_GROOM = [
     schedule: [
       { time: "2:00 PM", label: "Jaan Prasthan" },
       { time: "3:00 PM", label: "Baraat" },
-      { time: "3:30 PM", label: "High Tea" },
+      { time: "4:00 PM", label: "High Tea" },
       { time: "5:30 PM", label: "Hasta Melap" },
       { time: "7:00 PM", label: "Dinner" },
       { time: "9:00 PM", label: "Kanya Viday" },
@@ -234,7 +236,9 @@ const EVENTS_GROOM = [
     venue: "Bel Avenir Banquet",
     address: "Sardar Patel Ring Rd, Near Club Babylon, Near Science City, Sola, Bhadaj, Ahmedabad, Gujarat 382722",
     schedule: [
-      { time: "5:00 PM", label: "Sangeet" },
+      { time: "4:30 PM", label: "Cocktails" },
+      { time: "5:00 PM", label: "Family Performances" },
+      { time: "7:00 PM", label: "Teaser Film" },
       { time: "7:30 PM", label: "Dinner" },
     ],
     icon: "reception",
