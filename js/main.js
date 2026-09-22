@@ -464,7 +464,7 @@ function initRsvpLookup() {
       } else {
         MATCHED_GUEST = null;
         familyCard.hidden = true;
-        lookupStatus.textContent = "We couldn't find that number on our guest list — no worries, just fill in your details below and we'll add you.";
+        lookupStatus.textContent = "Please fill in your details below and we'll add you to the guest list.";
         lookupStatus.className = "rsvp-lookup-status show info";
       }
       formBody.hidden = false;
