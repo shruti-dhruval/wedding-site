@@ -157,7 +157,7 @@ const EVENTS_BRIDE = [
     venue: "Bel Avenir Banquet",
     address: "Sardar Patel Ring Rd, Near Club Babylon, Near Science City, Sola, Bhadaj, Ahmedabad, Gujarat 382722",
     schedule: [
-      { time: "4:30 PM", label: "Cocktail Hour" },
+      { time: "4:30 PM", label: "Cocktail & Appetizers" },
       { time: "5:00 PM", label: "Family Performances" },
       { time: "7:00 PM", label: "Teaser Film" },
       { time: "7:30 PM", label: "Dinner" },
@@ -238,7 +238,7 @@ const EVENTS_GROOM = [
     venue: "Bel Avenir Banquet",
     address: "Sardar Patel Ring Rd, Near Club Babylon, Near Science City, Sola, Bhadaj, Ahmedabad, Gujarat 382722",
     schedule: [
-      { time: "4:30 PM", label: "Cocktail Hour" },
+      { time: "4:30 PM", label: "Cocktail & Appetizers" },
       { time: "5:00 PM", label: "Family Performances" },
       { time: "7:00 PM", label: "Teaser Film" },
       { time: "7:30 PM", label: "Dinner" },
