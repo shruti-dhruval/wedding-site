@@ -16,15 +16,21 @@ let EVENTS = null;
 const CODE_STORAGE_KEY = "wedding-code";
 
 document.addEventListener("DOMContentLoaded", () => {
-  const storedCode = localStorage.getItem(CODE_STORAGE_KEY);
-  const entry = storedCode && INVITE_CODES[storedCode];
+  const params = new URLSearchParams(window.location.search);
+  if (params.has("reset")) {
+    localStorage.removeItem(CODE_STORAGE_KEY);
+  }
+  const urlCode = (params.get("code") || "").trim().toUpperCase();
+  const codeToUse = (urlCode && INVITE_CODES[urlCode]) ? urlCode : localStorage.getItem(CODE_STORAGE_KEY);
+  const entry = codeToUse && INVITE_CODES[codeToUse];
   if (entry) {
-    CURRENT_CODE = storedCode;
+    CURRENT_CODE = codeToUse;
     CURRENT_SIDE = entry.side;
     CURRENT_EVENT_IDS = entry.events;
+    localStorage.setItem(CODE_STORAGE_KEY, codeToUse);
     startSite();
   } else {
-    if (storedCode) localStorage.removeItem(CODE_STORAGE_KEY);
+    if (codeToUse) localStorage.removeItem(CODE_STORAGE_KEY);
     initSideGate();
   }
 });
@@ -137,6 +143,17 @@ function renderStory() {
 }
 
 function getEventCardSide(eventId) {
+  // If there is only one event (e.g. ONE or ISHQ), position it on the left
+  if (CURRENT_EVENT_IDS && CURRENT_EVENT_IDS.length === 1) {
+    return "left";
+  }
+
+  // For SD (wedding & reception only): Wedding on left, Reception on right
+  if (CURRENT_CODE === "SD") {
+    if (eventId === "wedding") return "left";
+    if (eventId === "reception") return "right";
+  }
+
   // For LOVE and DIL (or bride codes where Mehndi is not included),
   // Vidhi (Manglik Prasango) and Sangeet (Musical Mehfil) appear on the left
   // since they are on the same day (Dec 31).

@@ -256,14 +256,18 @@ const INVITE_CODES = {
   LOVE: { side: "bride", events: ["manglik-prasango", "musical-mehfil", "wedding", "reception"] },
   // 3 events (Vidhi, Sangeet, Marriage)
   DIL: { side: "bride", events: ["manglik-prasango", "musical-mehfil", "wedding"] },
+  // 2 events (Marriage, Reception)
+  SD: { side: "bride", events: ["wedding", "reception"] },
+  // 1 event (Marriage)
+  ONE: { side: "bride", events: ["wedding"] },
 
   // Dhruval's side (Groom)
   // All 3 (Vidhi, Marriage, Reception)
   MIL: { side: "groom", events: ["manglik-prasango", "wedding", "reception"] },
   // 2 events (Vidhi, Marriage)
   OM: { side: "groom", events: ["manglik-prasango", "wedding"] },
-  // 4 events (Vidhi, Sangeet, Marriage, Reception)
-  ISHQ: { side: "groom", events: ["manglik-prasango", "musical-mehfil", "wedding", "reception"] },
+  // 1 event (Reception)
+  ISHQ: { side: "groom", events: ["reception"] },
 };
 
 // Family photos shown in the "Our Family" section, each with its own label.
