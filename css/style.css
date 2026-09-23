@@ -365,6 +365,13 @@ section {
   margin-bottom: 4px;
 }
 
+.card .card-hand-img {
+  width: 60%;
+  max-width: 180px;
+  height: auto;
+  margin: 6px 0;
+}
+
 .card .card-date {
   font-family: var(--sans);
   letter-spacing: 0.2em;
