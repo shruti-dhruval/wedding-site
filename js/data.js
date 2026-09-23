@@ -15,10 +15,10 @@ const WEDDING = {
   countdownTarget: "2027-01-01T17:30:00+05:30",
   // Function date range shown in the hero and on the envelope card — the
   // groom's side starts a day later since there's no Mehndi Ceremony for them.
-  dateRange: "December 30, 2026 – January 2, 2027",
-  dateRangeGroom: "December 31, 2026 – January 2, 2027",
-  dateRangeShort: "Dec 30, 2026 – Jan 2, 2027",
-  dateRangeShortGroom: "Dec 31, 2026 – Jan 2, 2027",
+  dateRange: "January 1, 2027",
+  dateRangeGroom: "January 1, 2027",
+  dateRangeShort: "Jan 1, 2027",
+  dateRangeShortGroom: "Jan 1, 2027",
   // Wedding Events section eyebrow — a separate label from dateRange above
   // so it can be edited independently even though the values currently match.
   eventsEyebrow: "CELEBRATE WITH US",
@@ -118,8 +118,10 @@ const EVENTS_BRIDE = [
     venue: "The Grand Vinayak",
     address: "Sector 21, Maharashtra Samaj Bhavan, Gandhinagar, Gujarat 382021",
     schedule: [
+      { time: "6:00 PM", label: "Games" },
       { time: "6:30 PM", label: "Dinner" },
-      { time: "7:00 PM", label: "Sangeet/Garba" },
+      { time: "7:00 PM", label: "Sangeet Performances" },
+      { time: "8:00 PM", label: "Garba" },
     ],
     icon: "music",
     mapLink: "https://maps.app.goo.gl/ZwdmHMQa5afUuyQJ7",
@@ -155,7 +157,7 @@ const EVENTS_BRIDE = [
     venue: "Bel Avenir Banquet",
     address: "Sardar Patel Ring Rd, Near Club Babylon, Near Science City, Sola, Bhadaj, Ahmedabad, Gujarat 382722",
     schedule: [
-      { time: "4:30 PM", label: "Cocktails" },
+      { time: "4:30 PM", label: "Cocktail Hour" },
       { time: "5:00 PM", label: "Family Performances" },
       { time: "7:00 PM", label: "Teaser Film" },
       { time: "7:30 PM", label: "Dinner" },
@@ -236,7 +238,7 @@ const EVENTS_GROOM = [
     venue: "Bel Avenir Banquet",
     address: "Sardar Patel Ring Rd, Near Club Babylon, Near Science City, Sola, Bhadaj, Ahmedabad, Gujarat 382722",
     schedule: [
-      { time: "4:30 PM", label: "Cocktails" },
+      { time: "4:30 PM", label: "Cocktail Hour" },
       { time: "5:00 PM", label: "Family Performances" },
       { time: "7:00 PM", label: "Teaser Film" },
       { time: "7:30 PM", label: "Dinner" },
