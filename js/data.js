@@ -14,7 +14,7 @@ const WEDDING = {
   // Countdown target: Wedding, Hasta Melap
   countdownTarget: "2027-01-01T17:30:00+05:30",
   // Function date range shown in the hero and on the envelope card — the
-  // groom's side starts a day later since there's no Mehndi Ceremony for them.
+  // groom's side starts a day later since there's no Mehendi Ceremony for them.
   dateRange: "January 1, 2027",
   dateRangeGroom: "January 1, 2027",
   dateRangeShort: "Jan 1, 2027",
@@ -56,8 +56,8 @@ const OUR_STORY = {
 // EVENTS_BRIDE is shown to guests who enter with the bride-side password.
 const EVENTS_BRIDE = [
   {
-    id: "mehndi",
-    name: "Mehndi Ceremony",
+    id: "mehendi",
+    name: "Mehendi Ceremony",
     subtitle: "An afternoon of henna, happiness, and heartfelt moments",
     date: "2026-12-30",
     day: "Wednesday",
@@ -66,7 +66,7 @@ const EVENTS_BRIDE = [
     venue: "Plot No. 691, Vastunirman Society",
     address: "Sector 21, Gandhinagar, Gujarat 382021",
     schedule: [
-      { time: "3:30 PM", label: "Mehndi" },
+      { time: "3:30 PM", label: "Mehendi" },
       { time: "5:30 PM", label: "Dinner" },
     ],
     icon: "henna",
@@ -110,7 +110,7 @@ const EVENTS_BRIDE = [
   {
     id: "musical-mehfil",
     name: "Musical Mehfil",
-    subtitle: "A lively night of music, dance, and garba",
+    subtitle: "A lively night of games, music, dance, and garba",
     date: "2026-12-31",
     day: "Thursday",
     dateLabel: "December 31, 2026",
@@ -252,8 +252,8 @@ const EVENTS_GROOM = [
 // and the subset of event ids that household is invited to.
 const INVITE_CODES = {
   // Shruti's side (Bride)
-  // All 5 (Mehndi, Vidhi, Sangeet, Marriage, Reception)
-  MILAN: { side: "bride", events: ["mehndi", "manglik-prasango", "musical-mehfil", "wedding", "reception"] },
+  // All 5 (Mehendi, Vidhi, Sangeet, Marriage, Reception)
+  MILAN: { side: "bride", events: ["mehendi", "manglik-prasango", "musical-mehfil", "wedding", "reception"] },
   // 4 events (Vidhi, Sangeet, Marriage, Reception)
   LOVE: { side: "bride", events: ["manglik-prasango", "musical-mehfil", "wedding", "reception"] },
   // 3 events (Vidhi, Sangeet, Marriage)
@@ -269,7 +269,7 @@ const INVITE_CODES = {
   // 2 events (Vidhi, Marriage)
   OM: { side: "groom", events: ["manglik-prasango", "wedding"] },
   // 1 event (Reception)
-  ISHQ: { side: "groom", events: ["reception"] },
+  DHRUSHRU: { side: "groom", events: ["reception"] },
 };
 
 // Family photos shown in the "Our Family" section, each with its own label.

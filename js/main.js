@@ -154,20 +154,20 @@ function getEventCardSide(eventId) {
     if (eventId === "reception") return "right";
   }
 
-  // For LOVE and DIL (or bride codes where Mehndi is not included),
+  // For LOVE and DIL (or bride codes where Mehendi is not included),
   // Vidhi (Manglik Prasango) and Sangeet (Musical Mehfil) appear on the left
   // since they are on the same day (Dec 31).
-  if (CURRENT_CODE === "LOVE" || CURRENT_CODE === "DIL" || (CURRENT_SIDE === "bride" && !CURRENT_EVENT_IDS.includes("mehndi"))) {
+  if (CURRENT_CODE === "LOVE" || CURRENT_CODE === "DIL" || (CURRENT_SIDE === "bride" && !CURRENT_EVENT_IDS.includes("mehendi"))) {
     if (eventId === "manglik-prasango" || eventId === "musical-mehfil") return "left";
     if (eventId === "wedding") return "right";
     if (eventId === "reception") return "left";
   }
 
-  // For MILAN (bride side with Mehndi):
-  // Mehndi (Dec 30) is on the left; Vidhi & Sangeet (Dec 31) are on the right.
+  // For MILAN (bride side with Mehendi):
+  // Mehendi (Dec 30) is on the left; Vidhi & Sangeet (Dec 31) are on the right.
   // Wedding is on the left, Reception is on the right.
   if (CURRENT_SIDE === "bride") {
-    if (eventId === "mehndi") return "left";
+    if (eventId === "mehendi") return "left";
     if (eventId === "manglik-prasango" || eventId === "musical-mehfil") return "right";
     if (eventId === "wedding") return "left";
     if (eventId === "reception") return "right";
