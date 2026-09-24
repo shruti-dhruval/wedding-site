@@ -112,6 +112,16 @@
             Use <code>{firstName}</code>, <code>{lastName}</code>, <code>{familyName}</code> and
             <code>{link}</code> — each gets replaced per recipient before the message is queued.
           </p>
+          <div class="admin-card pdf-info-banner" id="pdf-info-banner">
+            <div class="pdf-info-icon">📎</div>
+            <div class="pdf-info-text">
+              <strong>PDF Invitations</strong>
+              <p>Each guest's invite code (from the <em>Family Label</em> column in your guest list) is matched to a PDF
+                in <code>whatsapp-sender/pdfs/</code>. When the sender script runs, it attaches the matching
+                PDF and renames it to <code>Firstname_Lastname_Invitation.pdf</code> per recipient.</p>
+              <p class="pdf-info-status" id="pdf-info-status"></p>
+            </div>
+          </div>
           <div class="form-field">
             <label for="message-link">Site link (fills {link})</label>
             <input type="url" id="message-link" placeholder="https://your-wedding-site.com" />
@@ -137,9 +147,9 @@
           <div class="admin-table-scroll"><table id="recipients-table" class="admin-table"></table></div>
           <button class="btn btn-primary" id="queue-messages-btn">Queue Messages for Selected Recipients</button>
           <span id="queue-result" class="admin-inline-status"></span>
-          <p class="admin-hint">Queuing doesn't send anything — it stores the message in the sheet. Run
-            the <code>whatsapp-sender</code> script on your computer (scan the WhatsApp QR code once) to
-            actually send the queued messages. See <code>whatsapp-sender/README.md</code>.</p>
+          <p class="admin-hint">Queuing stores the message in the sheet along with each guest's invite code.
+            Run the <code>whatsapp-sender</code> script on your computer to actually send the text message +
+            PDF attachment over WhatsApp. See <code>whatsapp-sender/README.md</code>.</p>
         </div>
 
         <div class="admin-card">

@@ -67,6 +67,39 @@ You can safely re-run `npm start` any time — it only ever sends messages
 still marked `pending`, so it won't double-send anything the admin panel
 has already queued once it's marked `sent`.
 
+## PDF Invitations
+
+Each invite code (e.g. `MILAN`, `LOVE`, `SD`) can have a matching PDF
+invitation that gets sent as a WhatsApp document alongside the text
+message.
+
+**Setup:**
+1. Place your PDFs in the `pdfs/` folder, named exactly after the invite
+   code in uppercase:
+   ```
+   pdfs/MILAN.pdf
+   pdfs/LOVE.pdf
+   pdfs/DIL.pdf
+   pdfs/SD.pdf
+   pdfs/ONE.pdf
+   pdfs/MIL.pdf
+   pdfs/OM.pdf
+   pdfs/DHRUSHRU.pdf
+   ```
+2. The invite code comes from the **Family Label** column in your guest
+   list Excel sheet — the admin panel stores it alongside each queued
+   message automatically.
+
+**How it works:**
+- When a message is sent, the script looks up the recipient's invite code
+  (Family Label) and checks for a matching `pdfs/<CODE>.pdf`.
+- If found, the PDF is sent as a document with a **personalized filename**:
+  `Firstname_Lastname_Invitation.pdf` (e.g. `Bharat_Patel_Invitation.pdf`).
+- If no matching PDF exists, the text message is still sent — just without
+  an attachment. A warning is logged so you can add the missing PDF and
+  re-queue if needed.
+- `npm run dry-run` shows which PDF would be attached for each recipient.
+
 ## A few honest caveats
 
 - This uses [whatsapp-web.js](https://wwebjs.dev/), an **unofficial**

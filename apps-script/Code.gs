@@ -152,7 +152,7 @@ function getGuestsSheet_() {
 
 // Same column-order caveat as GUESTS_HEADERS above — markMessageStatus_
 // writes to fixed column numbers in this sheet.
-var MESSAGELOG_HEADERS = ["ID", "Phone", "Name", "Message", "Status", "Queued At", "Sent At", "Error"];
+var MESSAGELOG_HEADERS = ["ID", "Phone", "Name", "First Name", "Last Name", "Family Label", "Message", "Status", "Queued At", "Sent At", "Error"];
 
 function getMessageLogSheet_() {
   return getOrCreateSheet_("MessageLog", MESSAGELOG_HEADERS);
@@ -432,7 +432,7 @@ function queueMessages_(recipients) {
   var now = new Date();
   var rows = recipients.map(function (r) {
     var id = Utilities.getUuid();
-    return [id, r.phone || "", r.name || "", r.message || "", "pending", now, "", ""];
+    return [id, r.phone || "", r.name || "", r.firstName || "", r.lastName || "", r.familyLabel || "", r.message || "", "pending", now, "", ""];
   });
   sheet.getRange(sheet.getLastRow() + 1, 1, rows.length, MESSAGELOG_HEADERS.length).setValues(rows);
   return { status: "ok", queued: rows.length };
@@ -445,8 +445,9 @@ function listMessages_() {
   var rows = sheet.getRange(2, 1, lastRow - 1, MESSAGELOG_HEADERS.length).getValues();
   return rows.map(function (row, i) {
     return {
-      id: row[0], phone: row[1], name: row[2], message: row[3],
-      status: row[4], queuedAt: row[5], sentAt: row[6], error: row[7],
+      id: row[0], phone: row[1], name: row[2], firstName: row[3], lastName: row[4],
+      familyLabel: row[5], message: row[6],
+      status: row[7], queuedAt: row[8], sentAt: row[9], error: row[10],
       _row: i + 2,
     };
   });
@@ -458,8 +459,8 @@ function markMessageStatus_(id, status, error) {
   var match = messages.find(function (m) { return m.id === id; });
   if (!match) return { status: "error", message: "Message id not found." };
   var sheet = getMessageLogSheet_();
-  sheet.getRange(match._row, 5).setValue(status); // Status
-  if (status === "sent") sheet.getRange(match._row, 7).setValue(new Date()); // Sent At
-  if (error) sheet.getRange(match._row, 8).setValue(error); // Error
+  sheet.getRange(match._row, 8).setValue(status); // Status
+  if (status === "sent") sheet.getRange(match._row, 10).setValue(new Date()); // Sent At
+  if (error) sheet.getRange(match._row, 11).setValue(error); // Error
   return { status: "ok" };
 }

@@ -407,6 +407,78 @@ body.admin-body {
   height: 18px;
 }
 
+/* ---------------------------------------------------------------------- */
+/* PDF info banner                                                        */
+/* ---------------------------------------------------------------------- */
+
+.pdf-info-banner {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  background: linear-gradient(135deg, var(--cream-50), #f5ece0);
+  border: 1px solid var(--gold-400);
+  border-left: 4px solid var(--gold-500);
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-bottom: 18px;
+  box-shadow: none;
+}
+
+.pdf-info-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.pdf-info-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.pdf-info-text strong {
+  display: block;
+  font-size: 14px;
+  color: var(--maroon-700);
+  margin-bottom: 4px;
+}
+
+.pdf-info-text p {
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  margin: 0 0 6px;
+  line-height: 1.55;
+}
+
+.pdf-info-text code {
+  background: var(--gold-200);
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 11.5px;
+}
+
+.pdf-info-status {
+  font-size: 11.5px;
+  color: var(--maroon-700);
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+/* ---------------------------------------------------------------------- */
+/* PDF indicators in recipients table                                     */
+/* ---------------------------------------------------------------------- */
+
+.pdf-indicator {
+  font-size: 11.5px;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+.pdf-indicator.pdf-missing {
+  color: #b26a2b;
+  font-style: italic;
+}
+
 @media (max-width: 640px) {
   .admin-header-inner {
     flex-wrap: wrap;
@@ -416,5 +488,10 @@ body.admin-body {
   .admin-card-head {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .pdf-info-banner {
+    flex-direction: column;
+    gap: 8px;
   }
 }

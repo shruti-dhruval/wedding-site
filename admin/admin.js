@@ -484,18 +484,20 @@ function renderRecipientsTable() {
   if (!guestsCache.length) {
     table.innerHTML = `<tbody><tr class="admin-empty-row"><td>No guests uploaded yet — upload a guest list first.</td></tr></tbody>`;
     document.getElementById("recipient-count-badge").textContent = "0";
+    updatePdfInfoBanner();
     return;
   }
 
   table.innerHTML = `
-    <thead><tr><th></th><th>Name</th><th>Phone</th><th>Family</th><th>RSVP</th></tr></thead>
+    <thead><tr><th></th><th>Name</th><th>Phone</th><th>Invite Code</th><th>PDF</th><th>RSVP</th></tr></thead>
     <tbody>
       ${guestsCache.map((g, i) => `
         <tr>
           <td><input type="checkbox" class="recipients-table-checkbox" data-index="${i}" /></td>
           <td>${escapeHtml([g.firstName, g.lastName].filter(Boolean).join(" "))}</td>
           <td>${escapeHtml(g.phone)}</td>
-          <td>${escapeHtml(g.familyLabel)}</td>
+          <td><span class="admin-status-pill">${escapeHtml(g.familyLabel || "—")}</span></td>
+          <td>${g.familyLabel ? `<span class="pdf-indicator">📎 ${escapeHtml(g.familyLabel)}.pdf</span>` : `<span class="pdf-indicator pdf-missing">No code</span>`}</td>
           <td><span class="admin-status-pill ${g.rsvpStatus === "Responded" ? "responded" : "not-responded"}">${escapeHtml(g.rsvpStatus || "Not Responded")}</span></td>
         </tr>
       `).join("")}
@@ -506,6 +508,22 @@ function renderRecipientsTable() {
     cb.addEventListener("change", () => { updateRecipientCount(); updateMessagePreview(); });
   });
   updateRecipientCount();
+  updatePdfInfoBanner();
+}
+
+function updatePdfInfoBanner() {
+  const statusEl = document.getElementById("pdf-info-status");
+  if (!statusEl) return;
+  if (!guestsCache.length) {
+    statusEl.textContent = "";
+    return;
+  }
+  const codes = [...new Set(guestsCache.map((g) => g.familyLabel).filter(Boolean))];
+  const noCodes = guestsCache.filter((g) => !g.familyLabel).length;
+  let text = `${codes.length} invite code${codes.length !== 1 ? "s" : ""} found: ${codes.join(", ")}.`;
+  if (noCodes) text += ` ${noCodes} guest${noCodes !== 1 ? "s" : ""} have no invite code.`;
+  text += ` Make sure matching PDFs exist in whatsapp-sender/pdfs/.`;
+  statusEl.textContent = text;
 }
 
 function getCheckedRecipients() {
@@ -547,6 +565,9 @@ async function queueSelectedMessages() {
     const payload = recipients.map((g) => ({
       phone: g.phone,
       name: [g.firstName, g.lastName].filter(Boolean).join(" ") || g.phone,
+      firstName: g.firstName || "",
+      lastName: g.lastName || "",
+      familyLabel: g.familyLabel || "",
       message: applyTemplate(template, g),
     }));
     const res = await apiPost("queueMessages", { recipients: payload });
@@ -590,12 +611,13 @@ async function loadMessages() {
   }
   const sorted = messages.slice().reverse();
   table.innerHTML = `
-    <thead><tr><th>Phone</th><th>Name</th><th>Message</th><th>Status</th><th>Queued</th><th>Sent</th><th>Error</th></tr></thead>
+    <thead><tr><th>Phone</th><th>Name</th><th>Invite Code</th><th>Message</th><th>Status</th><th>Queued</th><th>Sent</th><th>Error</th></tr></thead>
     <tbody>
       ${sorted.map((m) => `
         <tr>
           <td>${escapeHtml(m.phone)}</td>
           <td>${escapeHtml(m.name)}</td>
+          <td><span class="admin-status-pill">${escapeHtml(m.familyLabel || "")}</span></td>
           <td title="${escapeHtml(m.message)}">${escapeHtml(String(m.message || "").slice(0, 60))}${String(m.message || "").length > 60 ? "…" : ""}</td>
           <td><span class="admin-status-pill ${escapeHtml(m.status)}">${escapeHtml(m.status)}</span></td>
           <td>${escapeHtml(formatCell(m.queuedAt))}</td>

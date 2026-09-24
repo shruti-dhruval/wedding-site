@@ -6,7 +6,8 @@
   "main": "send.js",
   "scripts": {
     "start": "node send.js",
-    "dry-run": "node send.js --dry-run"
+    "dry-run": "node send.js --dry-run",
+    "postinstall": "patch-package"
   },
   "engines": {
     "node": ">=18"
@@ -14,5 +15,8 @@
   "dependencies": {
     "qrcode-terminal": "^0.12.0",
     "whatsapp-web.js": "^1.34.0"
+  },
+  "devDependencies": {
+    "patch-package": "^8.0.1"
   }
 }

@@ -450,9 +450,22 @@ function initRsvpLookup() {
   });
 
   async function runLookup() {
-    const phone = phoneInput.value.trim();
-    if (!phone) {
+    const rawPhone = phoneInput.value.trim();
+    if (!rawPhone) {
       lookupStatus.textContent = "Please enter your phone number.";
+      lookupStatus.className = "rsvp-lookup-status show error";
+      return;
+    }
+
+    // Smart phone normalization: strip all non-digits, drop leading trunk
+    // "0", and keep only the last 10 digits — so +919898637980,
+    // 919898637980, 09898637980, and 9898637980 all resolve the same way.
+    let digits = rawPhone.replace(/\D/g, "");
+    if (digits.length === 11 && digits.charAt(0) === "0") digits = digits.substring(1);
+    const phone = digits.length > 10 ? digits.slice(-10) : digits;
+
+    if (!phone || phone.length < 10) {
+      lookupStatus.textContent = "Please enter a valid 10-digit phone number.";
       lookupStatus.className = "rsvp-lookup-status show error";
       return;
     }
@@ -520,7 +533,6 @@ function initRsvpLookup() {
 
     familyCard.innerHTML = `
       <p class="rsvp-family-eyebrow">We found your invitation</p>
-      <h4 class="rsvp-family-name">${escapeHtml(data.familyLabel || "Your Family")}</h4>
       <ul class="rsvp-family-members">
         ${members.map((m) => `<li>${escapeHtml(m)}</li>`).join("")}
       </ul>
