@@ -148,12 +148,6 @@ function getEventCardSide(eventId) {
     return "left";
   }
 
-  // For SD (wedding & reception only): Wedding on left, Reception on right
-  if (CURRENT_CODE === "SD") {
-    if (eventId === "wedding") return "left";
-    if (eventId === "reception") return "right";
-  }
-
   // For LOVE and DIL (or bride codes where Mehendi is not included),
   // Vidhi (Manglik Prasango) and Sangeet (Musical Mehfil) appear on the left
   // since they are on the same day (Dec 31).

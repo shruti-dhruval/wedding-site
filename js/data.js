@@ -258,8 +258,6 @@ const INVITE_CODES = {
   LOVE: { side: "bride", events: ["manglik-prasango", "musical-mehfil", "wedding", "reception"] },
   // 3 events (Vidhi, Sangeet, Marriage)
   DIL: { side: "bride", events: ["manglik-prasango", "musical-mehfil", "wedding"] },
-  // 2 events (Marriage, Reception)
-  SD: { side: "bride", events: ["wedding", "reception"] },
   // 1 event (Marriage)
   ONE: { side: "bride", events: ["wedding"] },
 
@@ -267,7 +265,11 @@ const INVITE_CODES = {
   // All 3 (Vidhi, Marriage, Reception)
   MIL: { side: "groom", events: ["manglik-prasango", "wedding", "reception"] },
   // 2 events (Vidhi, Marriage)
-  OM: { side: "groom", events: ["manglik-prasango", "wedding"] },
+  OM: { side: "groom", events: ["manglik-prasango", "reception"] },
+  // 1 event (Vidhi only)
+  VIDHI: { side: "groom", events: ["manglik-prasango"] },
+  // 2 events (Marriage, Reception)
+  SD: { side: "groom", events: ["wedding", "reception"] },
   // 1 event (Reception)
   DHRUSHRU: { side: "groom", events: ["reception"] },
 };

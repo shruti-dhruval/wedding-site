@@ -1,7 +1,7 @@
 {
   "scriptUrl": "https://script.google.com/macros/s/PASTE_YOUR_DEPLOYMENT_ID/exec",
   "adminToken": "paste-the-same-ADMIN_TOKEN-you-set-in-Apps-Script-Script-Properties",
-  "minDelayMs": 4000,
-  "maxDelayMs": 9000,
+  "minDelayMs": 2000,
+  "maxDelayMs": 4000,
   "defaultCountryCode": "91"
 }
