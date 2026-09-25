@@ -432,6 +432,7 @@ function initRsvpLookup() {
   const familyCard = document.getElementById("rsvp-family-card");
   const formBody = document.getElementById("rsvp-form-body");
   const nameInput = document.getElementById("guest-name");
+  const lookupHeading = document.getElementById("rsvp-lookup-heading");
 
   // The button does double duty (Find My Invite / Change Number). A single
   // flag routes its one click listener to the right handler, rather than
@@ -496,7 +497,10 @@ function initRsvpLookup() {
       lookupBtn.textContent = "Change Number";
       lookupBtn.disabled = false;
       isLookedUp = true;
-      formBody.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      // Keep the "Find Your Invitation" heading as the anchor point instead
+      // of jumping down to the family card or form, so the card's start
+      // stays in view after a lookup (success or not).
+      lookupHeading.scrollIntoView({ behavior: "smooth", block: "start" });
     } catch (err) {
       lookupStatus.textContent = "Something went wrong looking up your number. Please try again, or just fill in the form below.";
       lookupStatus.className = "rsvp-lookup-status show error";

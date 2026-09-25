@@ -269,7 +269,7 @@ const INVITE_CODES = {
   // 1 event (Vidhi only)
   VIDHI: { side: "groom", events: ["manglik-prasango"] },
   // 2 events (Marriage, Reception)
-  SD: { side: "groom", events: ["wedding", "reception"] },
+  DS: { side: "groom", events: ["wedding", "reception"] },
   // 1 event (Reception)
   DHRUSHRU: { side: "groom", events: ["reception"] },
 };
