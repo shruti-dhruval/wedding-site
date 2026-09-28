@@ -260,6 +260,8 @@ const INVITE_CODES = {
   DIL: { side: "bride", events: ["manglik-prasango", "musical-mehfil", "wedding"] },
   // 1 event (Marriage)
   ONE: { side: "bride", events: ["wedding"] },
+  // 2 events (Sangeet, Marriage)
+  "S&D": { side: "bride", events: ["musical-mehfil", "wedding"] },
 
   // Dhruval's side (Groom)
   // All 3 (Vidhi, Marriage, Reception)
