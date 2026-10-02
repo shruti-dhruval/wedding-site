@@ -597,6 +597,10 @@ function initRsvpForm() {
       form.reset();
       document.querySelectorAll(".event-choice.is-attending").forEach((el) => el.classList.remove("is-attending"));
       if (resetRsvpLookup) resetRsvpLookup();
+      // After a successful RSVP, send them into the Gallery instead of
+      // leaving them parked on the now-reset RSVP card.
+      const gallerySection = document.getElementById("gallery");
+      if (gallerySection) gallerySection.scrollIntoView({ behavior: "smooth", block: "start" });
     } catch (err) {
       showStatus(statusEl, "error", "Something went wrong sending your RSVP. Please try again, or call us directly — see contact numbers below.");
     } finally {
