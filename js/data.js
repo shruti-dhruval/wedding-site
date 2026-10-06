@@ -63,8 +63,8 @@ const EVENTS_BRIDE = [
     day: "Wednesday",
     dateLabel: "December 30, 2026",
     city: "Gandhinagar",
-    venue: "Plot No. 691, Vastunirman Society",
-    address: "Sector 21, Gandhinagar, Gujarat 382021",
+    venue: "Our Home",
+    address: "Plot No. 691, Vastunirman Society, Sector 21, Gandhinagar, Gujarat 382021",
     schedule: [
       { time: "3:30 PM", label: "Mehendi" },
       { time: "5:30 PM", label: "Dinner" },
@@ -85,8 +85,8 @@ const EVENTS_BRIDE = [
     // Vastunirman Society, then the celebration moves to The Grand Vinayak.
     venues: [
       {
-        venue: "Plot No. 691, Vastunirman Society",
-        address: "Sector 21, Gandhinagar, Gujarat 382021",
+        venue: "Our Home",
+        address: "Plot No. 691, Vastunirman Society, Sector 21, Gandhinagar, Gujarat 382021",
         mapLink: "https://maps.app.goo.gl/1dAAKhy6y1sLHKqz6?g_st=aw",
         schedule: [
           { time: "8:00 AM", label: "Ganesh Sthapana" },
@@ -184,8 +184,8 @@ const EVENTS_GROOM = [
     // Vishwakarma Colony, then lunch moves to the banquet hall.
     venues: [
       {
-        venue: "1/E Vishwakarma Colony",
-        address: "Besides Vaibhav Laxmi Mandir, Gordhanwadi Tekra, Near Kankaria Gate No. 1, Ahmedabad, Gujarat 380028",
+        venue: "Our Home",
+        address: "1/E Vishwakarma Colony, Besides Vaibhav Laxmi Mandir, Gordhanwadi Tekra, Near Kankaria Gate No. 1, Ahmedabad, Gujarat 380028",
         mapLink: "https://maps.app.goo.gl/GBCCfpeDZxtzDhTg9?g_st=aw",
         schedule: [
           { time: "8:00 AM", label: "Mandap Muhurat" },
