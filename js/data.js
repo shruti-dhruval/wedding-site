@@ -120,7 +120,7 @@ const EVENTS_BRIDE = [
     schedule: [
       { time: "6:00 PM", label: "Games" },
       { time: "6:30 PM", label: "Dinner" },
-      { time: "7:00 PM", label: "Sangeet Performances" },
+      { time: "7:00 PM", label: "Sangeet / Performances" },
       { time: "8:00 PM", label: "Garba" },
     ],
     icon: "music",
