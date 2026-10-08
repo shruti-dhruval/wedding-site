@@ -11,7 +11,7 @@ const WEDDING = {
   groomParents: "Mr. Jigish Shah & Mrs. Vaibhavi Shah",
   brideLabel: "(Daughter of Meeta & Rajendra Patel)",
   groomLabel: "(Son of Vaibhavi & Jigish Shah)",
-  // Countdown target: Wedding, Hasta Melap
+  // Countdown target: Wedding, Hast Milap
   countdownTarget: "2027-01-01T17:30:00+05:30",
   // Function date range shown in the hero and on the envelope card — the
   // groom's side starts a day later since there's no Mehendi Ceremony for them.
@@ -139,9 +139,9 @@ const EVENTS_BRIDE = [
     schedule: [
       { time: "3:00 PM", label: "Jaan Aagman" },
       { time: "4:00 PM", label: "High Tea" },
-      { time: "5:30 PM", label: "Hasta Melap" },
+      { time: "5:30 PM", label: "Hast Milap" },
       { time: "7:00 PM", label: "Dinner" },
-      { time: "9:00 PM", label: "Kanya Viday" },
+      { time: "9:00 PM", label: "Vidaai" },
     ],
     icon: "rings",
     mapLink: "https://maps.app.goo.gl/9mmWJrST6KQL5gx5A",
@@ -220,9 +220,9 @@ const EVENTS_GROOM = [
       { time: "2:00 PM", label: "Jaan Prasthan" },
       { time: "3:00 PM", label: "Baraat" },
       { time: "4:00 PM", label: "High Tea" },
-      { time: "5:30 PM", label: "Hasta Melap" },
+      { time: "5:30 PM", label: "Hast Milap" },
       { time: "7:00 PM", label: "Dinner" },
-      { time: "9:00 PM", label: "Kanya Viday" },
+      { time: "9:00 PM", label: "Vidaai" },
     ],
     icon: "rings",
     mapLink: "https://maps.app.goo.gl/9mmWJrST6KQL5gx5A",
