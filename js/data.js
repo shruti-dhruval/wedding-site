@@ -155,7 +155,7 @@ const EVENTS_BRIDE = [
     dateLabel: "January 2, 2027",
     city: "Ahmedabad",
     venue: "Bel Avenir Banquet",
-    address: "Sardar Patel Ring Rd, Near Club Babylon, Near Science City, Sola, Bhadaj, Ahmedabad, Gujarat 382722",
+    address: "Sardar Patel Ring Road, Near Club Babylon, Near Science City, Sola, Bhadaj, Ahmedabad, Gujarat 382722",
     schedule: [
       { time: "4:30 PM", label: "Cocktail & Appetizers" },
       { time: "5:00 PM", label: "Family Performances" },
@@ -236,7 +236,7 @@ const EVENTS_GROOM = [
     dateLabel: "January 2, 2027",
     city: "Ahmedabad",
     venue: "Bel Avenir Banquet",
-    address: "Sardar Patel Ring Rd, Near Club Babylon, Near Science City, Sola, Bhadaj, Ahmedabad, Gujarat 382722",
+    address: "Sardar Patel Ring Road, Near Club Babylon, Near Science City, Sola, Bhadaj, Ahmedabad, Gujarat 382722",
     schedule: [
       { time: "4:30 PM", label: "Cocktail & Appetizers" },
       { time: "5:00 PM", label: "Family Performances" },
