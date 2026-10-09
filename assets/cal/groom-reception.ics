@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Shruti and Dhruval Wedding//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:Asia/Kolkata
+BEGIN:STANDARD
+TZOFFSETFROM:+0530
+TZOFFSETTO:+0530
+TZNAME:IST
+DTSTART:19700101T000000
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:20270102T163000-groom-reception@shrutidhruval.com
+DTSTAMP:20261009T023705Z
+DTSTART;TZID=Asia/Kolkata:20270102T163000
+DTEND;TZID=Asia/Kolkata:20270102T210000
+SUMMARY:Reception — Shruti & Dhruval's Wedding
+DESCRIPTION:A grand evening of dance\, celebration\, and togetherness\n\nSchedule:\n4:30 PM: Cocktail & Appetizers\n5:00 PM: Family Performances\n7:00 PM: Teaser Film\n7:30 PM: Dinner\n\nVenue:\nBel Avenir Banquet\nSardar Patel Ring Road\, Near Club Babylon\, Near Science City\, Sola\, Bhadaj\, Ahmedabad\, Gujarat 382722\n\nNote: All event times are in Indian Standard Time (IST\, UTC+5:30).
+LOCATION:Bel Avenir Banquet\, Sardar Patel Ring Road\, Near Club Babylon\, Near Science City\, Sola\, Bhadaj\, Ahmedabad\, Gujarat 382722
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

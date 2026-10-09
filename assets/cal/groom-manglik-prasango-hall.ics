@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Shruti and Dhruval Wedding//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:Asia/Kolkata
+BEGIN:STANDARD
+TZOFFSETFROM:+0530
+TZOFFSETTO:+0530
+TZNAME:IST
+DTSTART:19700101T000000
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:20261231T101500-groom-manglik-prasango-hall@shrutidhruval.com
+DTSTAMP:20261009T023705Z
+DTSTART;TZID=Asia/Kolkata:20261231T101500
+DTEND;TZID=Asia/Kolkata:20261231T120000
+SUMMARY:Manglik Prasango (Banquet Hall) — Shruti & Dhruval's Wedding
+DESCRIPTION:A sacred beginning filled with prayers\, blessings\, and cherished traditions\n\nSchedule:\n10:15 AM: Mosalu\n11:00 AM: Haldi\n12:00 PM: Lunch\n\nVenue:\nBanquet Hall\nAddress to be confirmed\n\nNote: All event times are in Indian Standard Time (IST\, UTC+5:30).
+LOCATION:Banquet Hall\, Address to be confirmed
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

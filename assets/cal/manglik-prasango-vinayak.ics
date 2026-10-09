@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Shruti and Dhruval Wedding//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:Asia/Kolkata
+BEGIN:STANDARD
+TZOFFSETFROM:+0530
+TZOFFSETTO:+0530
+TZNAME:IST
+DTSTART:19700101T000000
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:20261231T103000-manglik-prasango-vinayak@shrutidhruval.com
+DTSTAMP:20261009T023705Z
+DTSTART;TZID=Asia/Kolkata:20261231T103000
+DTEND;TZID=Asia/Kolkata:20261231T140000
+SUMMARY:Manglik Prasango (The Grand Vinayak) — Shruti & Dhruval's Wedding
+DESCRIPTION:A sacred beginning filled with prayers\, blessings\, and cherished traditions\n\nSchedule:\n10:30 AM: Haldi\n11:30 AM: Lunch\n1:00 PM: Grah Shanti\n2:00 PM: Mameru\n\nVenue:\nThe Grand Vinayak\nSector 21\, Maharashtra Samaj Bhavan\, Gandhinagar\, Gujarat 382021\n\nNote: All event times are in Indian Standard Time (IST\, UTC+5:30).
+LOCATION:The Grand Vinayak\, Sector 21\, Maharashtra Samaj Bhavan\, Gandhinagar\, Gujarat 382021
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

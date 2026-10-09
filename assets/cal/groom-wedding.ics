@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Shruti and Dhruval Wedding//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:Asia/Kolkata
+BEGIN:STANDARD
+TZOFFSETFROM:+0530
+TZOFFSETTO:+0530
+TZNAME:IST
+DTSTART:19700101T000000
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:20270101T140000-groom-wedding@shrutidhruval.com
+DTSTAMP:20261009T023705Z
+DTSTART;TZID=Asia/Kolkata:20270101T140000
+DTEND;TZID=Asia/Kolkata:20270101T210000
+SUMMARY:Wedding — Shruti & Dhruval's Wedding
+DESCRIPTION:A royal celebration of love\, vows\, and new beginnings\n\nSchedule:\n2:00 PM: Jaan Prasthan\n3:00 PM: Baraat\n4:00 PM: High Tea\n5:30 PM: Hast Milap\n7:00 PM: Dinner\n9:00 PM: Vidaai\n\nVenue:\nHotel Pathikashram Nilaya\nSector 11\, Opposite Civil Hospital\, Gandhinagar\, Gujarat 382010\n\nNote: All event times are in Indian Standard Time (IST\, UTC+5:30).
+LOCATION:Hotel Pathikashram Nilaya\, Sector 11\, Opposite Civil Hospital\, Gandhinagar\, Gujarat 382010
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

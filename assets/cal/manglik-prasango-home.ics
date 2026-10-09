@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Shruti and Dhruval Wedding//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:Asia/Kolkata
+BEGIN:STANDARD
+TZOFFSETFROM:+0530
+TZOFFSETTO:+0530
+TZNAME:IST
+DTSTART:19700101T000000
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:20261231T080000-manglik-prasango-home@shrutidhruval.com
+DTSTAMP:20261009T023705Z
+DTSTART;TZID=Asia/Kolkata:20261231T080000
+DTEND;TZID=Asia/Kolkata:20261231T100000
+SUMMARY:Manglik Prasango (Our Home) — Shruti & Dhruval's Wedding
+DESCRIPTION:A sacred beginning filled with prayers\, blessings\, and cherished traditions\n\nSchedule:\n8:00 AM: Ganesh Sthapana\n9:00 AM: Mandap Muhurat\n9:30 AM: Varadh\n\nVenue:\nOur Home\nPlot No. 691\, Vastunirman Society\, Sector 21\, Gandhinagar\, Gujarat 382021\n\nNote: All event times are in Indian Standard Time (IST\, UTC+5:30).
+LOCATION:Our Home\, Plot No. 691\, Vastunirman Society\, Sector 21\, Gandhinagar\, Gujarat 382021
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR
