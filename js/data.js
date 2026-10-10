@@ -112,7 +112,7 @@ const EVENTS_BRIDE = [
   {
     id: "musical-mehfil",
     name: "Musical Mehfil",
-    subtitle: "A lively night of games, music, dance, and garba",
+    subtitle: "A lively night of entertainment, music, dance, and garba",
     date: "2026-12-31",
     day: "Thursday",
     dateLabel: "December 31, 2026",
@@ -120,10 +120,9 @@ const EVENTS_BRIDE = [
     venue: "The Grand Vinayak",
     address: "Sector 21, Maharashtra Samaj Bhavan, Gandhinagar, Gujarat 382021",
     schedule: [
-      { time: "6:00 PM", label: "Games" },
-      { time: "6:30 PM", label: "Dinner" },
-      { time: "7:00 PM", label: "Sangeet / Performances" },
-      { time: "8:00 PM", label: "Garba" },
+      { time: "6:00 PM", label: "Sangeet / Performances" },
+      { time: "7:00 PM", label: "Dinner" },
+      { time: "7:30 PM", label: "Garba" },
     ],
     endTime: "9:00 PM",
     icon: "music",
