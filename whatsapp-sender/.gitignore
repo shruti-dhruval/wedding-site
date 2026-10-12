@@ -4,3 +4,4 @@ config.json
 .wwebjs_cache/
 *.log
 pdfs/*.pdf
+sent-ledger.json

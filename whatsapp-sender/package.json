@@ -8,6 +8,7 @@
     "start": "node send.js",
     "dry-run": "node send.js --dry-run",
     "logout": "node logout.js",
+    "clear-queue": "node clear-queue.js",
     "postinstall": "patch-package"
   },
   "engines": {

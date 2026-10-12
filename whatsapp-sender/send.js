@@ -20,6 +20,8 @@
  *                         your phone (Settings > Linked Devices > Link a
  *                         Device). The session is cached in .wwebjs_auth/ so
  *                         you won't need to scan again on future runs.
+ *   npm run logout        Unlinks this device from WhatsApp and clears the session
+ *                         (same as `npm start -- --logout`)
  *   npm run dry-run       Prints what would be sent without sending or
  *                         touching WhatsApp at all. Good for a sanity check.
  *
@@ -111,13 +113,41 @@ async function fetchPending(config) {
   return data.messages || [];
 }
 
+// Local record of every message id we've sent, kept next to this script. It is
+// the safety net if the sheet update fails (Apps Script sometimes returns an
+// HTML error page), so a message can never be re-sent on the next run.
+const LEDGER_PATH = path.join(__dirname, "sent-ledger.json");
+
+function loadLedger() {
+  try {
+    const data = JSON.parse(fs.readFileSync(LEDGER_PATH, "utf8"));
+    return { ids: data.ids || {} };
+  } catch {
+    return { ids: {} };
+  }
+}
+
+function saveLedger(ledger) {
+  fs.writeFileSync(LEDGER_PATH, JSON.stringify(ledger, null, 2));
+}
+
+// Retries, and never throws: a failed status update must not abort the run or
+// turn an already-sent message into a "failed" one.
 async function markStatus(config, id, status, errorMessage) {
-  const res = await fetch(config.scriptUrl, {
-    method: "POST",
-    headers: { "Content-Type": "text/plain;charset=utf-8" },
-    body: JSON.stringify({ action: "markSent", token: config.adminToken, id, status, error: errorMessage || "" }),
-  });
-  return res.json();
+  for (let attempt = 1; attempt <= 4; attempt++) {
+    try {
+      const res = await fetch(config.scriptUrl, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({ action: "markSent", token: config.adminToken, id, status, error: errorMessage || "" }),
+      });
+      const data = JSON.parse(await res.text());
+      if (data.status === "ok") return true;
+    } catch (_) { /* retry */ }
+    await sleep(1000 * attempt);
+  }
+  console.error(`  (could not update sheet status for ${id}; recorded locally in sent-ledger.json)`);
+  return false;
 }
 
 function sleep(ms) {
@@ -185,7 +215,16 @@ async function enrichWithGuestData(pending, config) {
   console.log(`  Enriched ${enriched} message(s) with guest data.`);
 }
 
+// `npm start -- --logout` unlinks this device from WhatsApp (same as `npm run logout`).
+function runLogout() {
+  const { spawn } = require("child_process");
+  const child = spawn(process.execPath, [path.join(__dirname, "logout.js")], { stdio: "inherit" });
+  child.on("exit", (code) => process.exit(code));
+}
+
 async function main() {
+  if (process.argv.includes("--logout")) return runLogout();
+
   const config = loadConfig();
   const dryRun = process.argv.includes("--dry-run");
 
@@ -238,19 +277,47 @@ async function main() {
     process.exit(1);
   });
 
+  // WhatsApp Web can emit "ready" more than once (e.g. after a reconnect).
+  // Without this guard each emit started another full send loop over the same
+  // pending list, which is what sent duplicate messages.
+  let started = false;
+
   client.on("ready", async () => {
+    if (started) {
+      console.log("\n(WhatsApp reconnected — send loop already running, ignoring.)\n");
+      return;
+    }
+    started = true;
     console.log("\nWhatsApp connected. Sending messages...\n");
     let sent = 0, failed = 0;
+    const ledger = loadLedger();
+    const sentPhones = new Set();
 
     for (let i = 0; i < pending.length; i++) {
       const m = pending[i];
       const chatId = toWhatsAppId(m.phone, config.defaultCountryCode);
+      const tag = `[${i + 1}/${pending.length}]`;
+
+      // Never send the same queued message (or same text to the same number)
+      // twice, even if the sheet still shows it as pending.
+      if (ledger.ids[m.id] || sentPhones.has(`${chatId}|${m.message}`)) {
+        console.log(`${tag} Skipping ${m.name} (${m.phone}) — already sent.`);
+        await markStatus(config, m.id, "sent");
+        continue;
+      }
+
+      let delivered = false;
       try {
         const isRegistered = await client.isRegisteredUser(chatId);
         if (!isRegistered) throw new Error("Number is not on WhatsApp.");
 
         // Send text message
         await client.sendMessage(chatId, m.message);
+        delivered = true;
+        // Record locally right away, before anything else can fail.
+        ledger.ids[m.id] = new Date().toISOString();
+        sentPhones.add(`${chatId}|${m.message}`);
+        saveLedger(ledger);
 
         // Send PDF attachment if available
         const pdf = preparePdfAttachment(m);
@@ -258,17 +325,18 @@ async function main() {
           const fileBuffer = fs.readFileSync(pdf.filePath);
           const media = new MessageMedia("application/pdf", fileBuffer.toString("base64"), pdf.personalizedName);
           await client.sendMessage(chatId, media, { sendMediaAsDocument: true });
-          console.log(`[${i + 1}/${pending.length}] Sent to ${m.name} (${m.phone}) + 📎 ${pdf.personalizedName}`);
+          console.log(`${tag} Sent to ${m.name} (${m.phone}) + 📎 ${pdf.personalizedName}`);
         } else {
-          console.log(`[${i + 1}/${pending.length}] Sent to ${m.name} (${m.phone}) (no PDF: ${pdf.reason})`);
+          console.log(`${tag} Sent to ${m.name} (${m.phone}) (no PDF: ${pdf.reason})`);
         }
 
         await markStatus(config, m.id, "sent");
         sent++;
       } catch (err) {
         failed++;
-        await markStatus(config, m.id, "failed", err.message || String(err));
-        console.error(`[${i + 1}/${pending.length}] FAILED for ${m.name} (${m.phone}): ${err.message || err}`);
+        console.error(`${tag} FAILED for ${m.name} (${m.phone}): ${err.message || err}`);
+        // If the text already went out, it must not be retried as "failed"/pending.
+        await markStatus(config, m.id, delivered ? "sent" : "failed", err.message || String(err));
       }
 
       if (i < pending.length - 1) {
