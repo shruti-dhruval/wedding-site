@@ -183,8 +183,8 @@ const EVENTS_GROOM = [
     dateLabel: "December 31, 2026",
     city: "Ahmedabad",
     icon: "om",
-    // This event spans two venues: rituals through Haldi happen at 1E
-    // Vishwakarma Colony, then lunch moves to the banquet hall.
+    // This event spans two venues: rituals happen at 1E Vishwakarma
+    // Colony, then Mosalu, Haldi & lunch move to People's Dine Restaurant & Banquets.
     venues: [
       {
         venue: "Our Home",
@@ -197,10 +197,9 @@ const EVENTS_GROOM = [
         ],
       },
       {
-        // EDIT ME: banquet hall name + address weren't filled in on the
-        // source document yet — update once confirmed.
-        venue: "Banquet Hall",
-        address: "Address to be confirmed",
+        venue: "People's Dine Restaurant & Banquets",
+        address: "2nd Floor, Sarovar Platinum, Near Bhulabhai Char Rasta, Kankaria, Ahmedabad, Gujarat 380022",
+        mapLink: "https://maps.app.goo.gl/2L3msGDXXXQ73qTr5",
         schedule: [
           { time: "10:15 AM", label: "Mosalu" },
           { time: "11:00 AM", label: "Haldi" },
