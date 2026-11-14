@@ -201,9 +201,9 @@ const EVENTS_GROOM = [
         address: "2nd Floor, Sarovar Platinum, Near Bhulabhai Char Rasta, Kankaria, Ahmedabad, Gujarat 380022",
         mapLink: "https://maps.app.goo.gl/2L3msGDXXXQ73qTr5",
         schedule: [
-          { time: "9:00 AM", label: "Mameru/Mosalu" },
-          { time: "10:00 AM", label: "Haldi" },
-          { time: "11:00 AM", label: "Grah Shanti" },
+          { time: "9:00 AM", label: "Haldi" },
+          { time: "9:30 AM", label: "Grah Shanti" },
+          { time: "11:00 AM", label: "Mameru/Mosalu" },
           { time: "12:00 PM", label: "Lunch" },
         ],
       },
