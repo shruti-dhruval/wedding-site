@@ -220,7 +220,7 @@ const EVENTS_GROOM = [
     venue: "Hotel Pathikashram Nilaya",
     address: "Sector 11, Opposite Civil Hospital, Gandhinagar, Gujarat 382010",
     schedule: [
-      { time: "2:00 PM", label: "Jaan Prasthan" },
+      { time: "1:00 PM", label: "Jaan Prasthan" },
       { time: "3:00 PM", label: "Baraat" },
       { time: "4:00 PM", label: "High Tea" },
       { time: "5:30 PM", label: "Hast Milap" },
