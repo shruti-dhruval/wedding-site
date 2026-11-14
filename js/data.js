@@ -191,9 +191,9 @@ const EVENTS_GROOM = [
         address: "1/E Vishwakarma Colony, Besides Vaibhav Laxmi Mandir, Gordhanwadi Tekra, Near Kankaria Gate No. 1, Ahmedabad, Gujarat 380028",
         mapLink: "https://maps.app.goo.gl/GBCCfpeDZxtzDhTg9?g_st=aw",
         schedule: [
-          { time: "8:00 AM", label: "Mandap Muhurat" },
-          { time: "8:30 AM", label: "Ganesh Sthapana" },
-          { time: "9:15 AM", label: "Gotardo" },
+          { time: "7:00 AM", label: "Mandap Muhurat" },
+          { time: "7:15 AM", label: "Ganesh Sthapana" },
+          { time: "8:00 AM", label: "Gotardo" },
         ],
       },
       {
@@ -201,8 +201,9 @@ const EVENTS_GROOM = [
         address: "2nd Floor, Sarovar Platinum, Near Bhulabhai Char Rasta, Kankaria, Ahmedabad, Gujarat 380022",
         mapLink: "https://maps.app.goo.gl/2L3msGDXXXQ73qTr5",
         schedule: [
-          { time: "10:00 AM", label: "Mameru/Mosalu" },
-          { time: "11:00 AM", label: "Haldi" },
+          { time: "9:00 AM", label: "Mameru/Mosalu" },
+          { time: "10:00 AM", label: "Haldi" },
+          { time: "11:00 AM", label: "Grah Shanti" },
           { time: "12:00 PM", label: "Lunch" },
         ],
       },
